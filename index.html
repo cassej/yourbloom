@@ -752,6 +752,18 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   .whom-grid { grid-template-columns: 1fr; }
   .daily-items { grid-template-columns: repeat(3, 1fr); }
   .modules-grid { grid-template-columns: 1fr; }
+  .timer-section { padding: 1rem 0.8rem; overflow: hidden; }
+  .timer-inner { flex-direction: column; gap: 0.6rem; }
+  .timer-digits { gap: 0.3rem; }
+  .timer-num { font-size: 1.4rem; min-width: 1.8rem; }
+  .timer-label { font-size: 0.65rem; }
+  .timer-sep { font-size: 1rem; margin-bottom: 0.6rem; }
+  /* Hide scroll hint on mobile — it overlaps hero CTA */
+  .scroll-hint { display: none; }
+  /* More breathing room for hero on mobile */
+  .hero { padding: 5rem 1.2rem 3rem; }
+  .hero-cta { width: 100%; }
+  .btn-primary { width: 100%; text-align: center; }
 }
 </style>
 </head>
@@ -772,8 +784,8 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   <p class="hero-sub" data-en="You haven't lost yourself. You just stopped choosing yourself." data-es="No te has perdido. Solo dejaste de elegirte."></p>
   <p class="hero-desc" data-en="A 30-day guided program of daily practices, psychology-based exercises, and honest reflection — designed for women who are ready to come home to themselves." data-es="Un programa guiado de 30 días con prácticas diarias, ejercicios basados en psicología y reflexión honesta — diseñado para mujeres listas para volver a sí mismas."></p>
   <div class="hero-cta">
-    <a href="#pricing" class="btn-primary" data-en="Begin Your Journey →" data-es="Comenzar Mi Camino →"></a>
-    <a href="#inside" class="btn-ghost" data-en="See what's included ↓" data-es="Ver qué incluye ↓"></a>
+    <a href="#pricing" class="btn-primary" id="hero-cta-btn" onclick="scrollTo_(event,'pricing')" data-en="Begin Your Journey →" data-es="Comenzar Mi Camino →">Begin Your Journey →</a>
+    <a href="#inside" class="btn-ghost" id="hero-ghost-btn" onclick="scrollTo_(event,'inside')" data-en="See what&#39;s included ↓" data-es="Ver qué incluye ↓">See what's included ↓</a>
   </div>
   <div class="scroll-hint">
     <span data-en="discover" data-es="descubrir"></span>
@@ -786,26 +798,26 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
 ══════════════════════════════════════════ -->
 <div class="timer-section">
   <div class="timer-inner">
-    <span class="timer-label" data-en="Early access closes in" data-es="El acceso anticipado cierra en"></span>
+    <span class="timer-label" id="timer-label-text">Early access closes in</span>
     <div class="timer-digits">
       <div class="timer-block">
         <span class="timer-num" id="t-days">00</span>
-        <span class="timer-unit" data-en="days" data-es="días"></span>
+        <span class="timer-unit" id="t-days-lbl">days</span>
       </div>
       <span class="timer-sep">:</span>
       <div class="timer-block">
         <span class="timer-num" id="t-hours">00</span>
-        <span class="timer-unit" data-en="hrs" data-es="hrs"></span>
+        <span class="timer-unit">hrs</span>
       </div>
       <span class="timer-sep">:</span>
       <div class="timer-block">
         <span class="timer-num" id="t-mins">00</span>
-        <span class="timer-unit" data-en="min" data-es="min"></span>
+        <span class="timer-unit">min</span>
       </div>
       <span class="timer-sep">:</span>
       <div class="timer-block">
         <span class="timer-num" id="t-secs">00</span>
-        <span class="timer-unit" data-en="sec" data-es="seg"></span>
+        <span class="timer-unit">sec</span>
       </div>
     </div>
   </div>
@@ -906,7 +918,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
       </div>
       <p class="price-note" data-en="One-time payment · Lifetime access" data-es="Pago único · Acceso de por vida"></p>
       <ul class="includes-list" id="includes-list"></ul>
-      <a href="https://buy.stripe.com/6oU9ATgbA9kNgeg1Fm3F60E" class="btn-buy" id="buy-btn" data-en="Start my 30 days →" data-es="Comenzar mis 30 días →"></a>
+      <a href="https://buy.stripe.com/6oU9ATgbA9kNgeg1Fm3F60E" class="btn-buy" id="buy-btn" data-en="Start my 30 days →" data-es="Comenzar mis 30 días →">Start my 30 days →</a>
       <div class="guarantee">
         <span>🔒</span>
         <span data-en="Secure payment via Stripe" data-es="Pago seguro con Stripe"></span>
@@ -935,7 +947,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   <div class="reveal">
     <h2 data-en="You've waited long enough." data-es="Ya esperaste suficiente."></h2>
     <p data-en="30 days. One practice at a time. You — returning to yourself." data-es="30 días. Una práctica a la vez. Tú — regresando a ti misma."></p>
-    <a href="#pricing" class="btn-primary-light" data-en="Begin Now →" data-es="Comenzar Ahora →"></a>
+    <a href="#pricing" class="btn-primary-light" data-en="Begin Now →" data-es="Comenzar Ahora →">Begin Now →</a>
   </div>
 </section>
 
@@ -1058,10 +1070,26 @@ const CONTENT = {
 // ════════════════════════════════════════
 let lang = 'en';
 
+function scrollTo_(e, id) {
+  e.preventDefault();
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function setLang(l) {
   lang = l;
   document.getElementById('btn-en').classList.toggle('active', l === 'en');
   document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  // Update hardcoded timer labels for language switch
+  var timerLbl = document.getElementById('timer-label-text');
+  if (timerLbl) timerLbl.textContent = l === 'en' ? 'Early access closes in' : 'El acceso anticipado cierra en';
+  var daysLbl = document.getElementById('t-days-lbl');
+  if (daysLbl) daysLbl.textContent = l === 'en' ? 'days' : 'días';
+  // Update hardcoded button texts
+  var heroBtn = document.getElementById('hero-cta-btn');
+  if (heroBtn) heroBtn.textContent = l === 'en' ? 'Begin Your Journey →' : 'Comenzar Mi Camino →';
+  var ghostBtn = document.getElementById('hero-ghost-btn');
+  if (ghostBtn) ghostBtn.textContent = l === 'en' ? "See what's included ↓" : 'Ver qué incluye ↓';
 
   // Update all data-en / data-es elements
   document.querySelectorAll('[data-en]').forEach(el => {

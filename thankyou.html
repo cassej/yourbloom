@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome · Bloom From Within</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #1c1a17;
+  --green: #3d5a47;
+  --green-light: #5a7d62;
+  --green-pale: #e8f0e9;
+  --cream: #f7f3ed;
+  --gold: #b8965a;
+  --white: #fffefb;
+  --text: #2e2a24;
+  --muted: #7a7268;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: white;
+  font-family: var(--sans);
+  font-weight: 300;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Blobs */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+body::before {
+  width: 400px; height: 400px;
+  background: var(--green);
+  top: -100px; right: -100px;
+  opacity: 0.2;
+}
+body::after {
+  width: 300px; height: 300px;
+  background: #8b6b4a;
+  bottom: -60px; left: -60px;
+  opacity: 0.15;
+}
+
+/* Lang toggle */
+.lang-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; justify-content: flex-end;
+  padding: 0.6rem 1.5rem;
+  z-index: 10;
+  gap: 0.3rem;
+}
+.lang-btn {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5); border-radius: 20px;
+  padding: 0.25rem 0.8rem; font-family: var(--sans);
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  cursor: pointer; transition: all 0.2s;
+}
+.lang-btn.active { background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.4); }
+
+/* Main card */
+.card {
+  max-width: 520px; width: 100%;
+  text-align: center;
+  animation: fadeUp 0.9s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bloom-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  animation: pulse 3s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+h1 em { font-style: italic; color: var(--gold); }
+
+.subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Steps */
+.steps {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2rem 1.8rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.steps-title {
+  font-family: var(--sans);
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.step {
+  display: flex; gap: 1rem;
+  align-items: flex-start;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.step:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 0.85rem; font-weight: 700;
+  color: white; flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.step-text { flex: 1; }
+.step-title {
+  font-family: var(--sans);
+  font-size: 0.9rem; font-weight: 500;
+  color: white; margin-bottom: 0.2rem;
+}
+.step-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* CTA button */
+.btn-start {
+  display: block; width: 100%;
+  background: var(--green);
+  color: white;
+  font-family: var(--sans);
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1.1rem 2rem;
+  border-radius: 60px;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(61,90,71,0.4);
+  margin-bottom: 1rem;
+}
+.btn-start:hover {
+  background: var(--green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(61,90,71,0.5);
+}
+
+.note {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.7;
+}
+.note a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+/* Confetti */
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 999; }
+.cp {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  animation: fall 1.5s ease-in forwards;
+}
+@keyframes fall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+</div>
+
+<div id="confetti"></div>
+
+<div class="card">
+  <span class="bloom-icon">🌸</span>
+  <p class="eyebrow" id="eyebrow">Welcome to the program</p>
+  <h1 id="heading">You chose <em>yourself.</em></h1>
+  <p class="subtitle" id="subtitle">That took courage. And it starts right now.</p>
+
+  <div class="steps">
+    <div class="steps-title" id="steps-title">YOUR NEXT STEPS</div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <div class="step-title" id="s1t">Check your email</div>
+        <div class="step-desc" id="s1d">You'll receive a confirmation from Stripe and a welcome message with your access link. Check your spam folder if you don't see it.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <div class="step-title" id="s2t">Open your program</div>
+        <div class="step-desc" id="s2d">Click the button below to open your 30-day portal. Bookmark it — you'll be coming back every day.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <div class="step-title" id="s3t">Begin with Day 1</div>
+        <div class="step-desc" id="s3d">Set today as your start date. Day 1 takes about 20 minutes. There's no rush — but there's no better moment than now.</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://yourbloom.site/course.html" class="btn-start" id="cta-btn">
+    Open my program →
+  </a>
+
+  <p class="note" id="note">
+    Questions? Write to <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a><br>
+    We're here for you. 🌿
+  </p>
+</div>
+
+<script>
+const TEXT = {
+  en: {
+    eyebrow: "Welcome to the program",
+    heading: 'You chose <em>yourself.</em>',
+    subtitle: "That took courage. And it starts right now.",
+    steps_title: "YOUR NEXT STEPS",
+    s1t: "Check your email",
+    s1d: "You'll receive a confirmation from Stripe and a welcome message with your access link. Check your spam folder if you don't see it.",
+    s2t: "Open your program",
+    s2d: "Click the button below to open your 30-day portal. Bookmark it — you'll be coming back every day.",
+    s3t: "Begin with Day 1",
+    s3d: "Set today as your start date. Day 1 takes about 20 minutes. There's no rush — but there's no better moment than now.",
+    cta: "Open my program →",
+    note: 'Questions? Write to <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a><br>We\'re here for you. 🌿',
+  },
+  es: {
+    eyebrow: "Bienvenida al programa",
+    heading: 'Te elegiste <em>a ti misma.</em>',
+    subtitle: "Eso requirió valentía. Y comienza ahora mismo.",
+    steps_title: "TUS PRÓXIMOS PASOS",
+    s1t: "Revisa tu correo",
+    s1d: "Recibirás una confirmación de Stripe y un mensaje de bienvenida con tu enlace de acceso. Revisa la carpeta de spam si no lo ves.",
+    s2t: "Abre tu programa",
+    s2d: "Haz clic en el botón de abajo para abrir tu portal de 30 días. Guárdalo en favoritos — volverás cada día.",
+    s3t: "Comienza con el Día 1",
+    s3d: "Establece hoy como tu fecha de inicio. El Día 1 toma unos 20 minutos. No hay prisa — pero no hay mejor momento que ahora.",
+    cta: "Abrir mi programa →",
+    note: '¿Preguntas? Escríbenos a <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a><br>Estamos aquí para ti. 🌿',
+  }
+};
+
+function setLang(l) {
+  const t = TEXT[l];
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  document.getElementById('eyebrow').textContent  = t.eyebrow;
+  document.getElementById('heading').innerHTML    = t.heading;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.getElementById('steps-title').textContent = t.steps_title;
+  document.getElementById('s1t').textContent = t.s1t;
+  document.getElementById('s1d').textContent = t.s1d;
+  document.getElementById('s2t').textContent = t.s2t;
+  document.getElementById('s2d').textContent = t.s2d;
+  document.getElementById('s3t').textContent = t.s3t;
+  document.getElementById('s3d').textContent = t.s3d;
+  document.getElementById('cta-btn').textContent = t.cta;
+  document.getElementById('note').innerHTML = t.note;
+}
+
+// Confetti on load
+function launchConfetti() {
+  const colors = ['#b8965a','#5a7d62','#4a6ec2','#c2566a','#f0e8de','#ffffff'];
+  const container = document.getElementById('confetti');
+  for (let i = 0; i < 80; i++) {
+    const p = document.createElement('div');
+    p.className = 'cp';
+    p.style.cssText = `
+      left: ${Math.random()*100}vw;
+      background: ${colors[Math.floor(Math.random()*colors.length)]};
+      animation-delay: ${Math.random()*1}s;
+      animation-duration: ${1+Math.random()*1}s;
+      width: ${5+Math.random()*8}px;
+      height: ${5+Math.random()*8}px;
+      border-radius: ${Math.random()>0.5?'50%':'3px'};
+    `;
+    container.appendChild(p);
+  }
+  setTimeout(() => container.innerHTML = '', 3000);
+}
+
+setLang('en');
+setTimeout(launchConfetti, 400);
+</script>
+</body>
+</html>
