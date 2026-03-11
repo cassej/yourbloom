@@ -627,15 +627,45 @@ let soundNodes = [];
 // ════════════════════════════════════════════════════════════
 // PERSISTENCE
 // ════════════════════════════════════════════════════════════
+const CLOUD_URL = "https://script.google.com/macros/s/AKfycbxGZkzFhueZBa4azCj5aVtEp4w3oCFCIN80jZpOnrtVFGly51md2K58ntX0TkgHa9jLDQ/exec";
+
 function saveState() {
   localStorage.setItem('icm2_state', JSON.stringify(state));
+  const email = localStorage.getItem('user_email');
+  if (email) {
+    fetch(CLOUD_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        user_id: email,
+        answers: JSON.stringify(state),
+        lang: state.lang || 'en',
+        timestamp: new Date().toISOString()
+      })
+    }).catch(function(e) { console.error("Sync error:", e); });
+  }
 }
+
 function loadState() {
   const saved = localStorage.getItem('icm2_state');
   if (saved) {
     state = { ...state, ...JSON.parse(saved) };
     return true;
   }
+  return false;
+}
+
+async function loadFromCloud(email) {
+  try {
+    const res = await fetch(CLOUD_URL + "?email=" + encodeURIComponent(email));
+    const data = await res.json();
+    if (data && data.answers) {
+      const cloud = typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers;
+      state = { ...state, ...cloud };
+      localStorage.setItem('icm2_state', JSON.stringify(state));
+      return true;
+    }
+  } catch(e) { console.log("No cloud data:", e); }
   return false;
 }
 
@@ -1223,11 +1253,22 @@ function setVolume(val) {
 // ════════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
-  // Set default date to today
+window.addEventListener('DOMContentLoaded', async () => {
   const today = new Date().toISOString().slice(0,10);
   document.getElementById('ob-date').value = today;
 
+  const email = localStorage.getItem('user_email');
+
+  // If email known — try to load from cloud first
+  if (email) {
+    const cloudLoaded = await loadFromCloud(email);
+    if (cloudLoaded && state.name && state.startDate) {
+      launchApp();
+      return;
+    }
+  }
+
+  // Fallback: local storage
   if (loadState() && state.name && state.startDate) {
     launchApp();
   }
