@@ -723,13 +723,20 @@ function getTodayDayNum() {
 // STREAK
 // ════════════════════════════════════════════════════════════
 function updateStreak() {
-  // Count consecutive days completed ending today or yesterday
   const today = new Date(); today.setHours(0,0,0,0);
+  const yesterday = new Date(today); yesterday.setDate(today.getDate()-1);
+  
+  // Start counting from today if something done today, else from yesterday
+  const todayIso = today.toISOString().slice(0,10);
+  const completedDates = Object.values(state.completed).filter(Boolean);
+  const doneToday = completedDates.some(d => d === todayIso);
+  
   let streak = 0;
-  let check = new Date(today);
+  let check = doneToday ? new Date(today) : new Date(yesterday);
+  
   while (true) {
     const iso = check.toISOString().slice(0,10);
-    const dayCompleted = Object.values(state.completed).some(d => d === iso);
+    const dayCompleted = completedDates.some(d => d === iso);
     if (dayCompleted) { streak++; check.setDate(check.getDate()-1); }
     else break;
   }
@@ -1253,25 +1260,15 @@ function setVolume(val) {
 // ════════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().slice(0,10);
   document.getElementById('ob-date').value = today;
 
-  const email = localStorage.getItem('user_email');
-
-  // If email known — try to load from cloud first
-  if (email) {
-    const cloudLoaded = await loadFromCloud(email);
-    if (cloudLoaded && state.name && state.startDate) {
-      launchApp();
-      return;
-    }
-  }
-
-  // Fallback: local storage
+  // Load from localStorage — this is the source of truth
   if (loadState() && state.name && state.startDate) {
     launchApp();
   }
+  // If no local state — show onboarding (first time on this device)
 });
 </script>
 </body>
