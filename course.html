@@ -1260,15 +1260,35 @@ function setVolume(val) {
 // ════════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   const today = new Date().toISOString().slice(0,10);
   document.getElementById('ob-date').value = today;
 
-  // Load from localStorage — this is the source of truth
+  // 1. Try localStorage first (same browser)
   if (loadState() && state.name && state.startDate) {
     launchApp();
+    return;
   }
-  // If no local state — show onboarding (first time on this device)
+
+  // 2. If email known — try to load from cloud (different browser/device)
+  const email = localStorage.getItem('user_email');
+  if (email) {
+    try {
+      const res = await fetch(CLOUD_URL + '?email=' + encodeURIComponent(email));
+      const data = await res.json();
+      if (data && data.answers && data.answers !== '{}') {
+        const parsed = typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers;
+        if (parsed.name && parsed.startDate) {
+          state = { ...state, ...parsed };
+          localStorage.setItem('icm2_state', JSON.stringify(state));
+          launchApp();
+          return;
+        }
+      }
+    } catch(e) { console.log('Cloud load failed:', e); }
+  }
+
+  // 3. Show onboarding — first time on this device/browser
 });
 </script>
 </body>
