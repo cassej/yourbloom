@@ -168,6 +168,66 @@ h1 em { font-style: italic; color: var(--gold); }
   line-height: 1.6;
 }
 
+/* Email block */
+.email-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.email-block-title {
+  font-family: var(--sans);
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.7rem;
+}
+.email-block p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+.email-row {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+}
+.email-input {
+  flex: 1; min-width: 160px;
+  padding: 0.7rem 1rem;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  color: white;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-input:focus { border-color: rgba(255,255,255,0.45); }
+.email-input.error { border-color: rgba(255,100,100,0.7); }
+.btn-save-email {
+  padding: 0.7rem 1.4rem;
+  border-radius: 40px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.btn-save-email:hover { opacity: 0.85; }
+.email-saved-msg {
+  display: none;
+  font-size: 0.8rem;
+  color: #7fc99a;
+  margin-top: 0.6rem;
+}
+
 /* CTA button */
 .btn-start {
   display: block; width: 100%;
@@ -240,8 +300,8 @@ h1 em { font-style: italic; color: var(--gold); }
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-text">
-        <div class="step-title" id="s2t">Open your program</div>
-        <div class="step-desc" id="s2d">Click the button below to open your 30-day portal. Bookmark it — you'll be coming back every day.</div>
+        <div class="step-title" id="s2t">Save your progress</div>
+        <div class="step-desc" id="s2d">Enter your email below so your progress is saved across all your devices.</div>
       </div>
     </div>
 
@@ -252,6 +312,22 @@ h1 em { font-style: italic; color: var(--gold); }
         <div class="step-desc" id="s3d">Set today as your start date. Day 1 takes about 20 minutes. There's no rush — but there's no better moment than now.</div>
       </div>
     </div>
+  </div>
+
+  <!-- EMAIL SAVE BLOCK -->
+  <div class="email-block">
+    <div class="email-block-title" id="email-block-title">SAVE YOUR ACCESS</div>
+    <p id="email-block-desc">Enter your email to save your progress. You'll be able to return from any device — phone, tablet, or computer.</p>
+    <div class="email-row">
+      <input
+        type="email"
+        id="email-input"
+        class="email-input"
+        placeholder="your@email.com"
+      />
+      <button class="btn-save-email" id="save-email-btn" onclick="saveEmail()">Save →</button>
+    </div>
+    <p class="email-saved-msg" id="email-saved-msg">✓ Saved! Your progress is now linked to this email.</p>
   </div>
 
   <a href="https://yourbloom.site/course.html" class="btn-start" id="cta-btn">
@@ -265,6 +341,9 @@ h1 em { font-style: italic; color: var(--gold); }
 </div>
 
 <script>
+// ════════════════════════════════════════
+// TRANSLATIONS
+// ════════════════════════════════════════
 const TEXT = {
   en: {
     eyebrow: "Welcome to the program",
@@ -273,11 +352,15 @@ const TEXT = {
     steps_title: "YOUR NEXT STEPS",
     s1t: "Check your email",
     s1d: "You'll receive a confirmation from Stripe and a welcome message with your access link. Check your spam folder if you don't see it.",
-    s2t: "Open your program",
-    s2d: "Click the button below to open your 30-day portal. Bookmark it — you'll be coming back every day.",
+    s2t: "Save your progress",
+    s2d: "Enter your email below so your progress is saved across all your devices.",
     s3t: "Begin with Day 1",
     s3d: "Set today as your start date. Day 1 takes about 20 minutes. There's no rush — but there's no better moment than now.",
     cta: "Open my program →",
+    email_block_title: "SAVE YOUR ACCESS",
+    email_block_desc: "Enter your email to save your progress. You'll be able to return from any device — phone, tablet, or computer.",
+    email_saved: "✓ Saved! Your progress is now linked to this email.",
+    save_btn: "Save →",
     note: 'Questions? Write to <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a><br>We\'re here for you. 🌿',
   },
   es: {
@@ -287,34 +370,92 @@ const TEXT = {
     steps_title: "TUS PRÓXIMOS PASOS",
     s1t: "Revisa tu correo",
     s1d: "Recibirás una confirmación de Stripe y un mensaje de bienvenida con tu enlace de acceso. Revisa la carpeta de spam si no lo ves.",
-    s2t: "Abre tu programa",
-    s2d: "Haz clic en el botón de abajo para abrir tu portal de 30 días. Guárdalo en favoritos — volverás cada día.",
+    s2t: "Guarda tu progreso",
+    s2d: "Ingresa tu email abajo para guardar tu progreso en todos tus dispositivos.",
     s3t: "Comienza con el Día 1",
     s3d: "Establece hoy como tu fecha de inicio. El Día 1 toma unos 20 minutos. No hay prisa — pero no hay mejor momento que ahora.",
     cta: "Abrir mi programa →",
+    email_block_title: "GUARDA TU ACCESO",
+    email_block_desc: "Ingresa tu email para guardar tu progreso. Podrás volver desde cualquier dispositivo — teléfono, tableta u ordenador.",
+    email_saved: "✓ ¡Guardado! Tu progreso está vinculado a este email.",
+    save_btn: "Guardar →",
     note: '¿Preguntas? Escríbenos a <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a><br>Estamos aquí para ti. 🌿',
   }
 };
 
+let currentLang = 'en';
+
 function setLang(l) {
+  currentLang = l;
   const t = TEXT[l];
   document.getElementById('btn-en').classList.toggle('active', l === 'en');
   document.getElementById('btn-es').classList.toggle('active', l === 'es');
-  document.getElementById('eyebrow').textContent  = t.eyebrow;
-  document.getElementById('heading').innerHTML    = t.heading;
-  document.getElementById('subtitle').textContent = t.subtitle;
-  document.getElementById('steps-title').textContent = t.steps_title;
-  document.getElementById('s1t').textContent = t.s1t;
-  document.getElementById('s1d').textContent = t.s1d;
-  document.getElementById('s2t').textContent = t.s2t;
-  document.getElementById('s2d').textContent = t.s2d;
-  document.getElementById('s3t').textContent = t.s3t;
-  document.getElementById('s3d').textContent = t.s3d;
-  document.getElementById('cta-btn').textContent = t.cta;
-  document.getElementById('note').innerHTML = t.note;
+  document.getElementById('eyebrow').textContent       = t.eyebrow;
+  document.getElementById('heading').innerHTML         = t.heading;
+  document.getElementById('subtitle').textContent      = t.subtitle;
+  document.getElementById('steps-title').textContent   = t.steps_title;
+  document.getElementById('s1t').textContent           = t.s1t;
+  document.getElementById('s1d').textContent           = t.s1d;
+  document.getElementById('s2t').textContent           = t.s2t;
+  document.getElementById('s2d').textContent           = t.s2d;
+  document.getElementById('s3t').textContent           = t.s3t;
+  document.getElementById('s3d').textContent           = t.s3d;
+  document.getElementById('cta-btn').textContent       = t.cta;
+  document.getElementById('email-block-title').textContent = t.email_block_title;
+  document.getElementById('email-block-desc').textContent  = t.email_block_desc;
+  document.getElementById('email-saved-msg').textContent   = t.email_saved;
+  document.getElementById('note').innerHTML            = t.note;
+
+  const saveBtn = document.getElementById('save-email-btn');
+  const alreadySaved = localStorage.getItem('user_email');
+  saveBtn.textContent = alreadySaved ? '✓ ' + (l === 'en' ? 'Saved' : 'Guardado') : t.save_btn;
 }
 
-// Confetti on load
+// ════════════════════════════════════════
+// CLOUD SYNC (Google Sheets)
+// ════════════════════════════════════════
+const CLOUD_URL = "https://script.google.com/macros/s/AKfycbxzL-v_1tEflimzMOveoMMd2hMqF3CYUUY2sBKZxsg6QdndmOyEPzI3OHk5zWPYHwdB/exec";
+
+async function saveToCloud(email) {
+  const progress = localStorage.getItem('bloom_progress') || '{}';
+  try {
+    await fetch(CLOUD_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        user_id: email,
+        answers: progress,
+        timestamp: new Date().toISOString()
+      })
+    });
+  } catch (e) {
+    console.error("Sync error:", e);
+  }
+}
+
+function saveEmail() {
+  const input = document.getElementById('email-input');
+  const email = input.value.trim();
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    input.classList.add('error');
+    setTimeout(() => input.classList.remove('error'), 1500);
+    return;
+  }
+
+  localStorage.setItem('user_email', email);
+  saveToCloud(email);
+
+  document.getElementById('email-saved-msg').style.display = 'block';
+  const btn = document.getElementById('save-email-btn');
+  btn.textContent = currentLang === 'en' ? '✓ Saved' : '✓ Guardado';
+  btn.style.opacity = '0.6';
+  btn.style.cursor = 'default';
+}
+
+// ════════════════════════════════════════
+// CONFETTI
+// ════════════════════════════════════════
 function launchConfetti() {
   const colors = ['#b8965a','#5a7d62','#4a6ec2','#c2566a','#f0e8de','#ffffff'];
   const container = document.getElementById('confetti');
@@ -335,8 +476,24 @@ function launchConfetti() {
   setTimeout(() => container.innerHTML = '', 3000);
 }
 
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
 setLang('en');
 setTimeout(launchConfetti, 400);
+
+// If email already saved — prefill field and show confirmation
+window.addEventListener('DOMContentLoaded', function() {
+  const saved = localStorage.getItem('user_email');
+  if (saved) {
+    document.getElementById('email-input').value = saved;
+    document.getElementById('email-saved-msg').style.display = 'block';
+    const btn = document.getElementById('save-email-btn');
+    btn.textContent = '✓ Saved';
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'default';
+  }
+});
 </script>
 </body>
 </html>
