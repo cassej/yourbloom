@@ -297,7 +297,7 @@ textarea:focus { border-color: rgba(0,0,0,0.25); background: white; }
 // ════════════════════════════════════════════════════════════
 const T = {
   en: {
-    ob_title: "Yo Me Elijo", ob_sub: "I CHOOSE MYSELF · 30-DAY PROGRAM",
+    ob_title: "I Choose Myself", ob_sub: "YO ME ELIJO · 30-DAY PROGRAM",
     ob_lang: "Language / Idioma", ob_name: "Your first name", ob_date: "Program start date",
     ob_btn: "Begin my journey →", name_ph: "e.g. Maria",
     greeting: (n) => `Welcome back, ${n}`,
@@ -317,7 +317,7 @@ const T = {
     module_subs: ["I notice myself","I look truth in the eye","I let go of the old","I build the new"],
   },
   es: {
-    ob_title: "I Choose Myself", ob_sub: "YO ME ELIJO · PROGRAMA DE 30 DÍAS",
+    ob_title: "Yo Me Elijo", ob_sub: "I CHOOSE MYSELF · PROGRAMA DE 30 DÍAS",
     ob_lang: "Idioma / Language", ob_name: "Tu nombre", ob_date: "Fecha de inicio del programa",
     ob_btn: "Comenzar mi camino →", name_ph: "ej. María",
     greeting: (n) => `Bienvenida de nuevo, ${n}`,
@@ -627,7 +627,7 @@ let soundNodes = [];
 // ════════════════════════════════════════════════════════════
 // PERSISTENCE
 // ════════════════════════════════════════════════════════════
-const CLOUD_URL = "https://script.google.com/macros/s/AKfycbxGZkzFhueZBa4azCj5aVtEp4w3oCFCIN80jZpOnrtVFGly51md2K58ntX0TkgHa9jLDQ/exec";
+const CLOUD_URL = "https://yourbloom.site/api/progress";
 
 function saveState() {
   localStorage.setItem('icm2_state', JSON.stringify(state));
@@ -1282,36 +1282,34 @@ function setVolume(val) {
 // INIT
 // ════════════════════════════════════════════════════════════
 // Bind start button properly for mobile
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', async () => {
+  const today = new Date().toISOString().slice(0,10);
+  document.getElementById('ob-date').value = today;
+
+  // Fix mobile button
   const btn = document.getElementById('ob-btn');
   if (btn) {
-    btn.addEventListener('click', startProgram);
     btn.addEventListener('touchend', function(e) {
       e.preventDefault();
       startProgram();
     });
   }
-});
+  // Ensure hero-cta visible after 2s fallback
+  setTimeout(function() {
+    var cta = document.querySelector('.hero-cta');
+    if (cta) cta.style.opacity = '1';
+  }, 2000);
 
-window.addEventListener('DOMContentLoaded', async () => {
-  const today = new Date().toISOString().slice(0,10);
-  document.getElementById('ob-date').value = today;
-
-  // Check if email passed in URL ?e=email@example.com
+  // Check email in URL ?e=email@example.com
   const urlParams = new URLSearchParams(window.location.search);
   const urlEmail = urlParams.get('e');
   if (urlEmail) {
     localStorage.setItem('user_email', urlEmail);
   }
 
-  // 1. Try localStorage first (same browser)
-  if (loadState() && state.name && state.startDate) {
-    launchApp();
-    return;
-  }
-
-  // 2. Try cloud by email (different browser/device)
   const email = urlEmail || localStorage.getItem('user_email');
+
+  // ALWAYS try cloud first if email known — cloud is source of truth
   if (email) {
     try {
       const res = await fetch(CLOUD_URL + '?email=' + encodeURIComponent(email));
@@ -1319,17 +1317,23 @@ window.addEventListener('DOMContentLoaded', async () => {
       if (data && data.answers && data.answers !== '{}') {
         const parsed = typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers;
         if (parsed.name && parsed.startDate) {
+          // Cloud overwrites local — always
           state = { ...state, ...parsed };
           localStorage.setItem('icm2_state', JSON.stringify(state));
           launchApp();
           return;
         }
       }
-    } catch(e) { console.log('Cloud load failed:', e); }
+    } catch(e) { console.log('Cloud load failed, trying local:', e); }
   }
 
-  // 3. Show onboarding — first time or after reset
-  // (onboarding is already visible by default)
+  // Fallback: localStorage (no internet or no cloud data)
+  if (loadState() && state.name && state.startDate) {
+    launchApp();
+    return;
+  }
+
+  // Show onboarding — first time or after reset
 });
 </script>
 </body>
