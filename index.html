@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Bloom From Within — a 30-day self-discovery program for women. Psychology-based. No spirituality required. English & Spanish.">
+<meta property="og:title" content="Bloom From Within · 30-Day Program">
+<meta property="og:description" content="A 30-day journey back to yourself. No pressure. No pretending. Just you, coming home to yourself.">
+<meta property="og:image" content="https://yourbloom.site/Bloom_From_Within.png">
+<meta property="og:url" content="https://yourbloom.site/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bloom From Within · yourbloom.site</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1209,7 +1216,11 @@ function updateTimer() {
   document.getElementById('t-mins').textContent  = String(mins).padStart(2,'0');
   document.getElementById('t-secs').textContent  = String(secs).padStart(2,'0');
 }
-try { setInterval(updateTimer, 1000); updateTimer(); } catch(e) { console.error("Timer error:", e); }
+try { const timerInterval = setInterval(updateTimer, 1000);
+// Clear timer when page is hidden to save battery
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) clearInterval(timerInterval);
+}); updateTimer(); } catch(e) { console.error("Timer error:", e); }
 
 // ════════════════════════════════════════
 // SCROLL REVEAL

@@ -627,21 +627,17 @@ let soundNodes = [];
 // ════════════════════════════════════════════════════════════
 // PERSISTENCE
 // ════════════════════════════════════════════════════════════
-// ════════════════════════════════════════════════════════════
-// DATE HELPER — всегда локальная дата, не UTC
-// ════════════════════════════════════════════════════════════
 function localDateISO(date) {
   const d = date || new Date();
-  const year  = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day   = String(d.getDate()).padStart(2, '0');
-  return year + '-' + month + '-' + day;
+  return d.getFullYear() + '-' +
+    String(d.getMonth()+1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
 }
 
 const CLOUD_URL = "https://script.google.com/macros/s/AKfycbxGZkzFhueZBa4azCj5aVtEp4w3oCFCIN80jZpOnrtVFGly51md2K58ntX0TkgHa9jLDQ/exec";
 
 function saveState() {
-  localStorage.setItem('icm2_state', JSON.stringify(state));
+  try { localStorage.setItem('icm2_state', JSON.stringify(state)); } catch(e) { console.warn('localStorage unavailable'); }
   const email = localStorage.getItem('user_email');
   if (email) {
     fetch(CLOUD_URL, {
@@ -658,7 +654,8 @@ function saveState() {
 }
 
 function loadState() {
-  const saved = localStorage.getItem('icm2_state');
+  let saved;
+  try { saved = localStorage.getItem('icm2_state'); } catch(e) { return false; }
   if (saved) {
     state = { ...state, ...JSON.parse(saved) };
     return true;
@@ -744,8 +741,8 @@ function updateStreak() {
   
   let streak = 0;
   let check = doneToday ? new Date(today) : new Date(yesterday);
-  
-  while (true) {
+  let safety = 0;
+  while (safety++ < 365) {
     const iso = localDateISO(check);
     const dayCompleted = completedDates.some(d => d === iso);
     if (dayCompleted) { streak++; check.setDate(check.getDate()-1); }
@@ -1280,7 +1277,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const today = localDateISO();
   document.getElementById('ob-date').value = today;
 
-  // Check if email passed in URL ?e=email@example.com
+  // Check if email passed in URL ?e=
   const urlParams = new URLSearchParams(window.location.search);
   const urlEmail = urlParams.get('e');
   if (urlEmail) {
