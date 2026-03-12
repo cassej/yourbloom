@@ -625,18 +625,33 @@ let soundPlaying = false;
 let soundNodes = [];
 
 // ════════════════════════════════════════════════════════════
-// PERSISTENCE — работает через token из URL (?token=XXX)
-// Воркер: GET /progress?token=XXX  →  { exists, progress }
-//         POST /progress           ←  { token, progress }
+// PERSISTENCE — token-based синхронизация
+// ?token=XXX  — прямая ссылка с токеном
+// ?e=email    — ссылка с email, токен создаётся автоматически
 // ════════════════════════════════════════════════════════════
 const CLOUD_URL = "https://yourbloom.site/api/progress";
+const API_BASE  = "https://yourbloom.site/api";
 
 function getToken() {
-  // Сначала из URL, потом из localStorage
   const p = new URLSearchParams(window.location.search);
   const t = p.get('token');
   if (t) { localStorage.setItem('bloom_token', t); return t; }
   return localStorage.getItem('bloom_token');
+}
+
+// Получить/создать токен по email (для ссылок ?e=email)
+async function resolveTokenByEmail(email) {
+  try {
+    const res = await fetch(API_BASE + '/token-by-email?email=' + encodeURIComponent(email), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (data.token) {
+      localStorage.setItem('bloom_token', data.token);
+      localStorage.setItem('user_email', email);
+      return data.token;
+    }
+  } catch(e) { console.error('resolveToken error:', e); }
+  return null;
 }
 
 function saveState() {
@@ -672,9 +687,10 @@ async function loadFromCloud(token) {
       const cloudTs = cloud.lastSaved || 0;
       const localTs = (local && local.lastSaved) ? local.lastSaved : 0;
       if (!local || cloudTs >= localTs) {
+        // Облако новее или нет локального — берём облако
         state = { ...state, ...cloud };
       } else {
-        // Локальное новее — пушим в облако
+        // Локальное новее — используем его и пушим в облако
         state = { ...state, ...local };
         fetch(CLOUD_URL, {
           method: "POST",
@@ -684,6 +700,23 @@ async function loadFromCloud(token) {
       }
       localStorage.setItem('icm2_state', JSON.stringify(state));
       return true;
+    }
+    // KV пуст — но токен валидный. Проверяем локальный прогресс и пушим его в облако
+    if (!data.exists) {
+      const localRaw = localStorage.getItem('icm2_state');
+      if (localRaw) {
+        const local = JSON.parse(localRaw);
+        if (local && local.name && local.startDate) {
+          state = { ...state, ...local };
+          // Пушим локальное в облако — синхронизируем между устройствами
+          fetch(CLOUD_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token, progress: state })
+          }).catch(function(e) { console.error("Push local to cloud:", e); });
+          return true;
+        }
+      }
     }
   } catch(e) { console.log("No cloud data:", e); }
   return false;
@@ -1321,8 +1354,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (cta) cta.style.opacity = '1';
   }, 2000);
 
-  // Получаем token из URL ?token=XXX или localStorage
-  const token = getToken();
+  // Получаем token — из ?token=, из ?e=email, или из localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmail = urlParams.get('e');
+  let token = getToken();
+
+  // Если в URL есть ?e=email — сначала резолвим токен через воркер
+  if (!token && urlEmail) {
+    token = await resolveTokenByEmail(urlEmail);
+  }
 
   // Если есть token — всегда грузим с облака первым
   if (token) {
@@ -1335,8 +1375,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch(e) { console.log('Cloud load failed, trying local:', e); }
   }
 
-  // Fallback: localStorage (нет интернета или токена)
+  // Fallback: localStorage (нет интернета или нет токена)
   if (loadState() && state.name && state.startDate) {
+    // Есть локальный прогресс — пушим в облако
+    const tok = getToken();
+    if (tok) {
+      fetch(CLOUD_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: tok, progress: state })
+      }).catch(function(e) { console.error("Init sync:", e); });
+    }
     launchApp();
     return;
   }
