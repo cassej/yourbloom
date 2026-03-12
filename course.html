@@ -658,7 +658,20 @@ function saveState() {
   state.lastSaved = Date.now();
   localStorage.setItem('icm2_state', JSON.stringify(state));
   const token = getToken();
-  if (!token) return;
+  if (token) {
+    pushToCloud(token);
+  } else {
+    // Токен ещё не разрезолвился — пробуем через email
+    const email = localStorage.getItem('user_email');
+    if (email) {
+      resolveTokenByEmail(email).then(function(t) {
+        if (t) pushToCloud(t);
+      });
+    }
+  }
+}
+
+function pushToCloud(token) {
   fetch(CLOUD_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -764,8 +777,23 @@ function startProgram() {
   }
   state.name = name;
   state.startDate = dateVal;
-  saveState();
-  launchApp();
+  // Убеждаемся что токен есть перед сохранением
+  const tok = getToken();
+  if (tok) {
+    saveState();
+    launchApp();
+  } else {
+    const em = localStorage.getItem('user_email');
+    if (em) {
+      resolveTokenByEmail(em).then(function() {
+        saveState();
+        launchApp();
+      });
+    } else {
+      saveState();
+      launchApp();
+    }
+  }
 }
 
 // ════════════════════════════════════════════════════════════
