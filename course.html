@@ -630,18 +630,21 @@ let soundNodes = [];
 const CLOUD_URL = "https://yourbloom.site/api/progress";
 
 function saveState() {
+  state.lastSaved = Date.now(); // временная метка для разрешения конфликтов между устройствами
   localStorage.setItem('icm2_state', JSON.stringify(state));
   const email = localStorage.getItem('user_email');
   if (email) {
     fetch(CLOUD_URL, {
       method: "POST",
-      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: email,
         answers: JSON.stringify(state),
         lang: state.lang || 'en',
         timestamp: new Date().toISOString()
       })
+    }).then(function(res) {
+      if (!res.ok) console.error("Sync error: HTTP " + res.status);
     }).catch(function(e) { console.error("Sync error:", e); });
   }
 }
@@ -657,11 +660,29 @@ function loadState() {
 
 async function loadFromCloud(email) {
   try {
-    const res = await fetch(CLOUD_URL + "?email=" + encodeURIComponent(email));
+    const res = await fetch(CLOUD_URL + "?email=" + encodeURIComponent(email), {
+      cache: "no-store"
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
     const data = await res.json();
     if (data && data.answers) {
       const cloud = typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers;
-      state = { ...state, ...cloud };
+      // Сравниваем временные метки — побеждает более свежая версия
+      const localRaw = localStorage.getItem('icm2_state');
+      const local = localRaw ? JSON.parse(localRaw) : null;
+      const cloudTs = cloud.lastSaved || 0;
+      const localTs = (local && local.lastSaved) ? local.lastSaved : 0;
+      if (!local || cloudTs >= localTs) {
+        state = { ...state, ...cloud };
+      } else {
+        // Локальное новее — пушим в облако, оставляем локальное
+        state = { ...state, ...local };
+        fetch(CLOUD_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: email, answers: JSON.stringify(state), lang: state.lang || 'en', timestamp: new Date().toISOString() })
+        }).catch(function(e) { console.error("Re-sync error:", e); });
+      }
       localStorage.setItem('icm2_state', JSON.stringify(state));
       return true;
     }
@@ -1312,7 +1333,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   // ALWAYS try cloud first if email known — cloud is source of truth
   if (email) {
     try {
-      const res = await fetch(CLOUD_URL + '?email=' + encodeURIComponent(email));
+      const res = await fetch(CLOUD_URL + '?email=' + encodeURIComponent(email), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
       if (data && data.answers && data.answers !== '{}') {
         const parsed = typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers;
