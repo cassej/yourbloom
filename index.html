@@ -903,7 +903,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
       <h2 class="section-title" data-en="What women say<br>after <em>30 days</em>" data-es="Lo que dicen las mujeres<br>después de <em>30 días</em>"></h2>
     </div>
     <div class="testimonials-grid reveal" id="testimonials-grid"></div>
-    <p class="testimonial-placeholder reveal" id="testimonial-placeholder"></p>
+    
   </div>
 </section>
 
@@ -912,6 +912,12 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
 ══════════════════════════════════════════ -->
 <section class="pricing-section" id="pricing">
   <div class="pricing-inner">
+    <!-- Already enrolled banner -->
+  <div class="enrolled-banner reveal">
+    <p data-en="Already enrolled? 🌸 Check your email for your personal course link — that's your way back in." data-es="¿Ya estás inscrita? 🌸 Revisa tu correo electrónico — ahí está tu enlace personal para acceder al curso.">Already enrolled? 🌸 Check your email for your personal course link — that's your way back in.</p>
+  </div>
+
+  
     <div class="reveal">
       <p class="section-eyebrow" data-en="Enrollment" data-es="Inscripción"></p>
       <h2 class="section-title" data-en="Choose yourself<br><em>today.</em>" data-es="Elígete<br><em>hoy.</em>"></h2>
@@ -1004,7 +1010,6 @@ const CONTENT = {
       { text: "By week 2 I realized I had spent years trying to be who everyone else needed me to be. This program gave me a mirror — a kind one.", name: "Rachel T.", loc: "Miami, FL", emoji: "🌿" },
       { text: "Simple, real, honest. No affirmations I didn't believe. Just questions that made me think — and space to answer them honestly.", name: "Camila V.", loc: "Bogotá, CO", emoji: "✨" },
     ],
-    placeholder: "⬆ These testimonials are placeholders — replace with real ones as they arrive.",
     includes: [
       "Lifetime access to the 30-day program portal",
       "Daily theory, practice + reflection prompt",
@@ -1053,7 +1058,6 @@ const CONTENT = {
       { text: "En la semana 2 me di cuenta de que había pasado años tratando de ser quien todos necesitaban que fuera. Este programa me dio un espejo — uno amable.", name: "Rachel T.", loc: "Miami, FL", emoji: "🌿" },
       { text: "Simple, real, honesto. Sin afirmaciones que no creía. Solo preguntas que me hicieron pensar — y espacio para responderlas con honestidad.", name: "Camila V.", loc: "Bogotá, CO", emoji: "✨" },
     ],
-    placeholder: "⬆ Estos testimonios son de muestra — reemplázalos con los reales cuando lleguen.",
     includes: [
       "Acceso de por vida al portal del programa de 30 días",
       "Teoría diaria, práctica + pregunta de reflexión",
@@ -1154,7 +1158,7 @@ function renderAll() {
           </div>
         </div>
       </div>`).join('');
-  document.getElementById('testimonial-placeholder').textContent = c.placeholder;
+  
 
   // Includes
   document.getElementById('includes-list').innerHTML =
