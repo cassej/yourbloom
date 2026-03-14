@@ -162,14 +162,6 @@ textarea:focus { border-color: rgba(0,0,0,0.25); background: white; }
 
 .hidden { display: none !important; }
 </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0C226LY14"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-P0C226LY14");
-</script>
 </head>
 <body>
 
@@ -620,10 +612,15 @@ let expanded = null;
 let activeModule = 0;
 let currentView = 'program';
 
-// Timer state
+// Timer state — per-day
 let timerInterval = null;
-let timerSeconds = 600; // 10 min default
+let timerSeconds = {}; // { dayNum: seconds }
 let timerRunning = false;
+let timerCurrentDay = null;
+
+function getTimerSeconds(dayNum) {
+  return timerSeconds[dayNum] !== undefined ? timerSeconds[dayNum] : 600;
+}
 
 // Audio state
 let audioCtx = null;
@@ -700,8 +697,8 @@ async function loadFromCloud(token) {
     const res = await fetch(CLOUD_URL + "?token=" + encodeURIComponent(token), { cache: "no-store" });
     if (!res.ok) throw new Error("HTTP " + res.status);
     const data = await res.json();
-    if (data && data.exists) {
-      const cloud = data.progress || { name: '', email: '', completed: {}, notes: {} };
+    if (data && data.exists && data.progress) {
+      const cloud = data.progress;
       // Побеждает более свежая версия
       const localRaw = localStorage.getItem('icm2_state');
       const local = localRaw ? JSON.parse(localRaw) : null;
@@ -922,7 +919,7 @@ function renderDays(days, todayDay) {
         <div class="timer-box">
           <div>
             <div class="timer-label">${t.timer_label}</div>
-            <div class="timer-display" id="timer-display-${d.day}">10:00</div>
+            <div class="timer-display" id="timer-display-${d.day}">${formatTimer(getTimerSeconds(d.day))}</div>
           </div>
           <button class="timer-ctrl" onclick="startTimer(${d.day})" id="timer-start-${d.day}">${t.start_timer}</button>
           <button class="timer-ctrl" style="background:#888" onclick="resetTimer(${d.day})">${t.reset_timer}</button>
@@ -1132,32 +1129,45 @@ function startTimer(dayNum) {
   const btn = document.getElementById('timer-start-'+dayNum);
   const display = document.getElementById('timer-display-'+dayNum);
   const t = T[state.lang];
-  if (timerRunning) {
+  // Если запущен другой день — останавливаем
+  if (timerRunning && timerCurrentDay !== dayNum) {
     clearInterval(timerInterval);
     timerRunning = false;
+    const oldBtn = document.getElementById('timer-start-'+timerCurrentDay);
+    if (oldBtn) oldBtn.textContent = t.start_timer;
+  }
+  if (timerRunning && timerCurrentDay === dayNum) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerCurrentDay = null;
     if (btn) btn.textContent = t.start_timer;
   } else {
     timerRunning = true;
+    timerCurrentDay = dayNum;
+    if (timerSeconds[dayNum] === undefined) timerSeconds[dayNum] = 600;
     if (btn) btn.textContent = t.stop_timer;
     timerInterval = setInterval(() => {
-      timerSeconds--;
-      if (timerSeconds <= 0) {
-        timerSeconds = 0;
+      timerSeconds[dayNum]--;
+      if (timerSeconds[dayNum] <= 0) {
+        timerSeconds[dayNum] = 0;
         clearInterval(timerInterval);
         timerRunning = false;
+        timerCurrentDay = null;
         if (btn) btn.textContent = t.start_timer;
-        // Play bell
         playBell();
       }
-      if (display) display.textContent = formatTimer(timerSeconds);
+      if (display) display.textContent = formatTimer(timerSeconds[dayNum]);
     }, 1000);
   }
 }
 
 function resetTimer(dayNum) {
-  clearInterval(timerInterval);
-  timerRunning = false;
-  timerSeconds = 600;
+  if (timerCurrentDay === dayNum) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerCurrentDay = null;
+  }
+  timerSeconds[dayNum] = 600;
   const display = document.getElementById('timer-display-'+dayNum);
   const btn = document.getElementById('timer-start-'+dayNum);
   const t = T[state.lang];
