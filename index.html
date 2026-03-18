@@ -12,12 +12,10 @@
     gtag('config', 'G-PQC226LY14');
   </script>
 
-  <!-- Magic Favicon (Emoji) -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YourBloom Studio | AI Aesthetics</title>
+  <title>YourBloom Studio | AI Aesthetics & Systems</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap"
     rel="stylesheet">
@@ -25,7 +23,10 @@
     :root {
       --cream: #f7f3ed;
       --white: #ffffff;
+      --pink-soft: #fdf0f0;
+      --pink-accent: #e8c6cc;
       --dark-pink: #c2566a;
+      --gold: #b8965a;
       --text-dark: #2e2a24;
       --text-muted: #6e675f;
     }
@@ -42,111 +43,170 @@
       font-family: 'Jost', sans-serif;
       font-weight: 300;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     .container {
-      width: 85%;
+      width: 90%;
       max-width: 1000px;
       margin: 0 auto;
     }
 
+    /* HERO */
     .hero {
       background: linear-gradient(180deg, #fffefb 0%, var(--cream) 100%);
       padding: 120px 0 80px;
       text-align: center;
     }
 
+    .hero-tag {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      margin-bottom: 20px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 8vw, 4.2rem);
       margin-bottom: 25px;
+      font-weight: 400;
+      line-height: 1.1;
     }
 
     .hero h1 em {
-      color: #b8965a;
+      color: var(--gold);
       font-style: italic;
     }
 
-    /* BUTTONS */
-    .btn {
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .btn-main {
       display: inline-block;
       background: var(--dark-pink);
       color: white;
-      padding: 16px 40px;
+      padding: 18px 45px;
       border-radius: 50px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 500;
-      cursor: pointer;
-      border: none;
+      letter-spacing: 1px;
       transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(194, 86, 106, 0.3);
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(194, 86, 106, 0.4);
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(194, 86, 106, 0.4);
     }
 
-    /* MODAL / FORM */
-    #contact-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(5px);
+    /* PRICING TABLES */
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      font-weight: 400;
     }
 
-    .modal-content {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 30px;
-      width: 90%;
-      max-width: 450px;
-      position: relative;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--text-muted);
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      font-family: inherit;
-    }
-
-    form textarea {
-      height: 100px;
-    }
-
-    .services {
+    .pricing-section {
       padding: 100px 0;
       background: var(--white);
     }
 
-    .grid {
+    .price-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
-    .card {
+    .price-group-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      border-left: 3px solid var(--gold);
+      padding-left: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    th {
+      background: var(--pink-soft);
+      text-align: left;
+      padding: 15px 20px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark-pink);
+    }
+
+    td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--pink-soft);
+      font-size: 0.95rem;
+    }
+
+    .price-tag {
+      font-weight: 500;
+      color: var(--dark-pink);
+    }
+
+    /* CUSTOM SOLUTIONS section */
+    .custom-solutions {
+      padding: 80px 0;
+      background: var(--dark-pink);
+      color: white;
+      border-radius: 40px;
+      margin: 40px 0;
+    }
+
+    .custom-solutions h2 {
+      color: white;
+    }
+
+    .custom-solutions p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 40px auto 0;
+      text-align: left;
+      background: white;
       padding: 40px;
-      border-radius: 28px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      background: var(--cream);
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: inherit;
     }
 
     footer {
@@ -154,6 +214,43 @@
       text-align: center;
       font-size: 0.75rem;
       color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--pink-soft);
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      td {
+        text-align: right;
+        border: none;
+        padding: 8px 10px;
+      }
+
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 500;
+        color: var(--text-muted);
+      }
     }
   </style>
 </head>
@@ -162,78 +259,112 @@
 
   <section class="hero">
     <div class="container">
-      <div style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">YourBloom
-        Studio</div>
+      <div class="hero-tag">YourBloom Studio</div>
       <h1>Bloom <em>Through</em><br>Intelligence</h1>
-      <p style="margin-bottom: 40px;">Elevating business with elegant AI systems and custom Notion architectures</p>
-
-      <button class="btn" onclick="openModal()">Work With Me</button>
-
-      <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-        <a href="https://t.me/milamira"
-          style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">Telegram</a>
-        <a href="https://linkedin.com/in/mariya-novikova-0475a82a5/"
-          style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
-      </div>
+      <p>High-end AI automation and custom Notion architecture for visionaries</p>
+      <a href="https://t.me/milamira" class="btn-main">Message on Telegram</a>
     </div>
   </section>
 
-  <!-- CONTACT MODAL -->
-  <div id="contact-modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">Send a Message</h2>
-      <form action="https://formspree.io/f/xojkplda" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="How can I help you?"></textarea>
-        <button type="submit" class="btn" style="width: 100%;">Send Request</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function openModal() { document.getElementById('contact-modal').style.display = 'flex'; }
-    function closeModal() { document.getElementById('contact-modal').style.display = 'none'; }
-    window.onclick = function (event) {
-      let modal = document.getElementById('contact-modal');
-      if (event.target == modal) closeModal();
-    }
-  </script>
-
-  <!-- Секция сервисов остается такой же, как раньше, просто удалила лишние точки -->
-  <section class="services">
+  <section class="pricing-section">
     <div class="container">
-      <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 60px;">
-        Studio Services</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>💎 Notion Systems</h3>
-          <p>Bespoke workspaces designed to turn organizational chaos into a calm, productive flow</p>
+      <h2 class="section-title">Services & Pricing</h2>
+
+      <!-- QUICK TASKS -->
+      <div class="price-grid">
+        <div>
+          <h3 class="price-group-title">⚡ Quick Tasks</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Delivery</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Service">Notion Page Setup</td>
+                <td data-label="Delivery">24h</td>
+                <td class="price-tag">$15</td>
+              </tr>
+              <tr>
+                <td data-label="Service">AI Social Media Pack</td>
+                <td data-label="Delivery">24h</td>
+                <td class="price-tag">$25</td>
+              </tr>
+              <tr>
+                <td data-label="Service">Data / CSV Cleanup</td>
+                <td data-label="Delivery">24h</td>
+                <td class="price-tag">$30</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card">
-          <h3>✍️ AI Content</h3>
-          <p>Premium copywriting using Claude 3.5 to maintain a sophisticated and human brand voice</p>
+
+        <!-- STUDIO PROJECTS -->
+        <div>
+          <h3 class="price-group-title">🌿 Studio Projects</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Scope</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Service">Notion Business OS</td>
+                <td data-label="Scope">Full Workspace</td>
+                <td class="price-tag">$150</td>
+              </tr>
+              <tr>
+                <td data-label="Service">AI Content System</td>
+                <td data-label="Scope">Prompts + Calendar</td>
+                <td class="price-tag">$120</td>
+              </tr>
+              <tr>
+                <td data-label="Service">AI Lead Gen System</td>
+                <td data-label="Scope">Audience Research</td>
+                <td class="price-tag">$250</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card">
-          <h3>📊 Data Insights</h3>
-          <p>Precise data cleaning and lead generation to fuel your business growth with clarity</p>
+      </div>
+
+      <!-- CUSTOM SECTION -->
+      <div class="custom-solutions">
+        <div class="container" style="text-align: center;">
+          <h2 class="section-title">Custom Enterprise Solutions</h2>
+          <p style="margin-bottom: 30px;">Powered by 17+ years of technical leadership. From AI Voice integrations to
+            Full Digital Ecosystems.</p>
+          <a href="https://t.me/milamira" class="btn-main" style="background: white; color: var(--dark-pink);">Get a
+            Custom Quote</a>
         </div>
       </div>
     </div>
   </section>
-  <!-- Добавь это в секцию Expertise -->
-  <section style="padding: 80px 0; background: #fffefb;">
-    <div class="container" style="text-align: center;">
-      <h2 class="section-title">Rooted in Experience</h2>
-      <p style="max-width: 700px; margin: 0 auto; color: #6e675f;">
-        Our studio is powered by 17+ years of deep technical leadership and software architecture.
-        We don't just use AI; we build scalable digital ecosystems that last.
-      </p>
+
+  <section class="contact-section">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif;">Start Your Journey</h2>
+      <p>Prefer email? Send a brief description of your project</p>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xojkplda" method="POST">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Project details" required></textarea>
+          <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Send
+            Message</button>
+        </form>
+      </div>
     </div>
   </section>
+
   <footer>
-    <p style>&copy; 2026 YourBloom Studio Based in Panama Operating in EST</p>
+    <p>&copy; 2026 YourBloom Studio · Based in Panama · EST Timezone</p>
   </footer>
 
 </body>
