@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO & Socials -->
-  <title>YourBloom Studio — AI Automation & Notion Systems | From $15</title>
+  <!-- SEO & Socials: Specialized for Coaches -->
+  <title>YourBloom Studio — Notion Operating Systems for Coaches | From $15</title>
   <meta name="description"
-    content="We build Notion workspaces, AI automations and lead generation systems for small businesses and freelancers. Quick tasks from $15, delivered in 24h. Based in Panama, serving globally.">
-  <meta property="og:title" content="YourBloom Studio — AI & Notion Systems">
-  <meta property="og:description" content="Custom Notion architecture and AI automations for businesses.">
+    content="We build custom Notion systems for coaches and consultants. CRM, onboarding automation, and content systems done for you in 3 days. Stop managing chaos.">
+  <meta property="og:title" content="YourBloom Studio — The OS for your Coaching Business">
+  <meta property="og:description" content="Bespoke Notion architecture for visionary coaches. Done for you in 24-72h.">
   <meta property="og:image" content="favicon.png">
   <meta property="og:url" content="https://yourbloom.site">
 
@@ -30,10 +30,11 @@
 
   <style>
     :root {
-      --cream: #f7f3ed;
+      --cream: #faf4ef;
       --white: #ffffff;
       --pink-soft: #fdf0f0;
-      --dark-pink: #c2566a;
+      --berry: #c94070;
+      /* New Brand Pink */
       --gold: #b8965a;
       --text-dark: #2e2a24;
       --text-muted: #6e675f;
@@ -68,20 +69,20 @@
     }
 
     .main-logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 30px;
+      width: 70px;
+      height: 70px;
+      margin-bottom: 25px;
       transition: 0.5s;
     }
 
     .main-logo:hover {
-      transform: rotate(15deg);
+      transform: rotate(10deg);
     }
 
     .hero-tag {
       letter-spacing: 4px;
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       margin-bottom: 20px;
       color: var(--gold);
       font-weight: 500;
@@ -90,7 +91,7 @@
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 7vw, 3.8rem);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       font-weight: 400;
       line-height: 1.1;
     }
@@ -103,8 +104,9 @@
     .hero p {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       color: var(--text-muted);
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto 30px;
+      font-weight: 400;
     }
 
     .btn-group {
@@ -117,7 +119,7 @@
 
     .btn-main {
       display: inline-block;
-      background: var(--dark-pink);
+      background: var(--berry);
       color: white;
       padding: 16px 35px;
       border-radius: 50px;
@@ -125,7 +127,7 @@
       font-size: 1rem;
       font-weight: 500;
       transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(194, 86, 106, 0.2);
+      box-shadow: 0 10px 20px rgba(201, 64, 112, 0.2);
       border: none;
     }
 
@@ -143,9 +145,10 @@
 
     .btn-main:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(194, 86, 106, 0.3);
+      box-shadow: 0 15px 30px rgba(201, 64, 112, 0.3);
     }
 
+    /* SECTION BASICS */
     .section-padding {
       padding: 90px 0;
     }
@@ -158,33 +161,37 @@
       font-weight: 400;
     }
 
-    /* HOW IT WORKS */
-    .how-it-works {
+    /* FOR WHO SECTION */
+    .for-who {
       background: var(--white);
       text-align: center;
     }
 
-    .steps-grid {
+    .check-list {
+      text-align: left;
+      max-width: 650px;
+      margin: 40px auto 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
+      gap: 15px;
     }
 
-    .step-num {
-      font-size: 2.5rem;
-      font-family: 'Playfair Display', serif;
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      font-size: 1.05rem;
+    }
+
+    .check-item::before {
+      content: "✦";
       color: var(--gold);
-      line-height: 1;
-      font-style: italic;
-      margin-bottom: 15px;
-      display: block;
+      font-weight: bold;
     }
 
-    /* CASE STUDIES */
+    /* CASE STUDIES GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
 
@@ -201,15 +208,28 @@
     }
 
     .card:hover {
-      border-color: var(--dark-pink);
+      border-color: var(--berry);
       transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15px;
+    }
+
+    .card .before-after {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      border-left: 2px solid var(--pink-soft);
+      padding-left: 15px;
     }
 
     .case-link {
       color: var(--gold);
       text-decoration: none;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       margin-top: 15px;
       display: inline-block;
     }
@@ -223,11 +243,12 @@
 
     .price-group-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--gold);
       margin-bottom: 25px;
-      display: block;
       text-align: center;
+      display: block;
+      letter-spacing: 1px;
     }
 
     .price-cards-grid {
@@ -246,18 +267,17 @@
     }
 
     .price-card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      border-color: var(--berry);
     }
 
     .price-card h4 {
       font-family: 'Playfair Display', serif;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 1.2rem;
     }
 
     .price-card .p-meta {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -267,9 +287,34 @@
 
     .price-card .p-val {
       font-size: 1.8rem;
-      color: var(--dark-pink);
+      color: var(--berry);
       font-family: 'Playfair Display';
       font-weight: 500;
+    }
+
+    .price-featured {
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 25px rgba(184, 150, 90, 0.1);
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--white);
+      padding: 80px 0;
+    }
+
+    .faq-grid {
+      max-width: 750px;
+      margin: 0 auto;
+      display: grid;
+      gap: 30px;
+    }
+
+    .faq-item h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-size: 1.2rem;
     }
 
     /* ABOUT */
@@ -292,7 +337,6 @@
       border: 4px solid var(--gold);
       overflow: hidden;
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
     }
 
     .about-photo-frame img {
@@ -315,29 +359,9 @@
 
     .stat-box b {
       font-size: 1.8rem;
-      color: var(--dark-pink);
+      color: var(--berry);
       font-family: 'Playfair Display';
       display: block;
-    }
-
-    /* FAQ */
-    .faq-section {
-      background: var(--white);
-      padding: 80px 0;
-    }
-
-    .faq-grid {
-      max-width: 750px;
-      margin: 0 auto;
-      display: grid;
-      gap: 30px;
-    }
-
-    .faq-item h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold);
-      margin-bottom: 8px;
-      font-size: 1.2rem;
     }
 
     /* CONTACT */
@@ -396,10 +420,11 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <img src="favicon.png" alt="YourBloom Studio Logo" class="main-logo">
+      <img src="favicon.png" alt="YourBloom Logo" class="main-logo">
       <div class="hero-tag">YourBloom Studio</div>
-      <h1>We build <em>Notion Systems</em> & <br>AI Automations</h1>
-      <p>Stop drowning in tabs. We build the "business brain" you need to scale without the chaos.</p>
+      <h1>We build the <em>Operating System</em> <br>for your coaching business</h1>
+      <p>Client CRM · Session tracking · Onboarding automation · Content system. <br>All in Notion. Done for you in 3
+        days.</p>
       <div class="btn-group">
         <a href="https://t.me/milamira" class="btn-main">Message on Telegram</a>
         <a href="https://wa.me/50763958484" class="btn-secondary">WhatsApp</a>
@@ -407,23 +432,16 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section-padding how-it-works">
+  <!-- FOR WHO -->
+  <section class="section-padding for-who">
     <div class="container">
-      <h2 class="section-title">How it works</h2>
-      <div class="steps-grid">
-        <div class="step-item"><span class="step-num">01</span>
-          <h4>Contact</h4>
-          <p>Tell us your pain points via Telegram or WhatsApp. No long calls.</p>
-        </div>
-        <div class="step-item"><span class="step-num">02</span>
-          <h4>Build</h4>
-          <p>We build your custom architecture. Quick tasks in 24-48h.</p>
-        </div>
-        <div class="step-item"><span class="step-num">03</span>
-          <h4>Grow</h4>
-          <p>Get your system + 1 free revision. Pay via PayPal when satisfied.</p>
-        </div>
+      <h2 class="section-title">This is for you if you:</h2>
+      <div class="check-list">
+        <div class="check-item">Manage clients in a spreadsheet or your memory</div>
+        <div class="check-item">Spend hours on onboarding every new client manually</div>
+        <div class="check-item">Stare at a blank screen when it's time to post content</div>
+        <div class="check-item">Have documents scattered across Drive, Email and Notes</div>
+        <div class="check-item">Know you need a system but don't know where to start</div>
       </div>
     </div>
   </section>
@@ -435,35 +453,45 @@
       <div class="grid">
         <div class="card">
           <div>
-            <h3>🏛️ Business OS</h3>
-            <p>Our signature workspace for tracking clients, projects, and finances in one place.</p>
+            <h3>🏛️ Coach OS</h3>
+            <div class="before-after">
+              <b>Before:</b> 3 spreadsheets, sticky notes, forgotten follow-ups.<br>
+              <b>After:</b> One workspace. Clients, sessions, content — all connected.
+            </div>
           </div>
           <a href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f1807e9a70ca6582e3da64?pvs=74"
-            target="_blank" class="case-link">See Live Demo →</a>
+            target="_blank" class="case-link">See Live Demo ($150) →</a>
         </div>
         <div class="card">
           <div>
-            <h3>📞 Voxline AI</h3>
-            <p>Enterprise-grade AI Voice & VoIP infrastructure built for high-volume automation.</p>
+            <h3>⚡ Onboarding Flow</h3>
+            <div class="before-after">
+              <b>Before:</b> 2 hours onboarding each client manually.<br>
+              <b>After:</b> Form submitted → Notion updated → Welcome email sent. Automatically.
+            </div>
           </div>
-          <a href="https://voxline.pro" target="_blank" class="case-link">Explore Project →</a>
+          <span class="case-link" style="color: var(--text-muted);">Built in 5 days ($200)</span>
         </div>
         <div class="card">
           <div>
-            <h3>🗓️ GestionCitas</h3>
-            <p>Sophisticated automated appointment systems for service-based businesses.</p>
+            <h3>✍️ AI Content System</h3>
+            <div class="before-after">
+              <b>Before:</b> Blank page panic every Monday.<br>
+              <b>After:</b> 30 days of content planned, prompted and ready to post.
+            </div>
           </div>
-          <a href="https://gestioncitas.online" target="_blank" class="case-link">Explore Project →</a>
+          <span class="case-link" style="color: var(--text-muted);">Done for you ($120)</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section class="section-padding pricing-section" style="background: var(--white);">
+  <section class="section-padding pricing-section">
     <div class="container">
       <h2 class="section-title">Services & Pricing</h2>
       <div class="pricing-wrapper">
+        <!-- QUICK -->
         <div>
           <span class="price-group-title">⚡ Quick Tasks</span>
           <div class="price-cards-grid">
@@ -471,37 +499,30 @@
               <h4>Notion Page Setup</h4><span class="p-val">$15</span>
             </div>
             <div class="price-card"><span class="p-meta">24h Delivery</span>
-              <h4>AI Social Media Pack</h4><span class="p-val">$25</span>
-            </div>
-            <div class="price-card"><span class="p-meta">24h Delivery</span>
-              <h4>Data / CSV Cleanup</h4><span class="p-val">$30</span>
+              <h4>AI Caption Pack (7)</h4><span class="p-val">$25</span>
             </div>
           </div>
         </div>
+        <!-- PROJECTS -->
         <div>
           <span class="price-group-title">🌿 Studio Projects</span>
           <div class="price-cards-grid">
-            <div class="price-card"><span class="p-meta">3 Days</span>
+            <div class="price-card"><span class="p-meta">48h Delivery</span>
               <h4>Basic Notion CRM</h4><span class="p-val">$75</span>
             </div>
-            <div class="price-card"><span class="p-meta">3-5 Days</span>
-              <h4>Full Business OS</h4><span class="p-val">$150</span>
+            <div class="price-card price-featured"><span class="p-meta">3 Days · Flagship</span>
+              <h4>Coach OS</h4><span class="p-val">$150</span>
             </div>
-            <div class="price-card"><span class="p-meta">3 Days</span>
-              <h4>AI Content System</h4><span class="p-val">$120</span>
-            </div>
-            <div class="price-card"><span class="p-meta">3-5 Days</span>
-              <h4>Zapier Automation</h4><span class="p-val">$200</span>
+            <div class="price-card"><span class="p-meta">5 Days</span>
+              <h4>Coach OS + Automation</h4><span class="p-val">$250</span>
             </div>
           </div>
         </div>
         <div style="text-align: center;">
-          <span class="price-group-title">🚀 Custom Solutions</span>
-          <div class="price-card" style="max-width: 500px; margin: 0 auto;">
-            <span class="p-meta">Enterprise & Voice</span>
-            <h4>AI Voice Integration</h4><span class="p-val">$1,000+</span>
-            <a href="https://t.me/milamira" class="btn-main"
-              style="margin-top: 20px; border: none; cursor: pointer;">Get a Custom Quote</a>
+          <span class="price-group-title">📅 Ongoing Support</span>
+          <div class="price-card" style="max-width: 400px; margin: 0 auto;">
+            <span class="p-meta">Monthly Retainer</span>
+            <h4>Tech Partner</h4><span class="p-val">$200/mo</span>
           </div>
         </div>
       </div>
@@ -515,8 +536,8 @@
         <div class="about-photo-frame"><img src="about-me.jpg" alt="Mariia — YourBloom Studio Founder"></div>
         <div class="about-text">
           <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Hi, I'm Mariia</h2>
-          <p>I help coaches and freelancers stop drowning in tabs. Behind every system I build is my partner Artem — 20+
-            years of technical experience in AI and software architecture.</p>
+          <p>I help coaches and online experts stop drowning in tabs. Behind every system I build is my partner Artem —
+            20+ years of technical experience in AI and software architecture.</p>
           <div class="stats-row">
             <div class="stat-box"><b>20+</b>Years Exp</div>
             <div class="stat-box"><b>24h</b>Fast Delivery</div>
@@ -527,40 +548,50 @@
     </div>
   </section>
 
+  <!-- FAQ -->
   <section class="faq-section">
     <div class="container">
       <h2 class="section-title">Common Questions</h2>
       <div class="faq-grid">
         <div class="faq-item">
           <h4>Do I need to know Notion?</h4>
-          <p>Not at all. We build everything and walk you through it.</p>
+          <p>Not at all. We build everything and walk you through it. It's designed to be simple for you to use.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How fast do you deliver?</h4>
+          <p>Quick tasks take 24h. Coach OS takes 3 days. Larger projects take 5 days.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can you build on my existing Notion?</h4>
+          <p>Yes. We can start from scratch or improve what you already have.</p>
         </div>
         <div class="faq-item">
           <h4>How do I pay?</h4>
-          <p>Via PayPal on completion. Projects over $200 require a 50% upfront deposit.</p>
+          <p>Via PayPal on delivery — you pay only when you're satisfied.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="section-padding contact-section">
     <div class="container">
       <h2 class="section-title">Start Your Journey</h2>
+      <p>Message us directly or fill out the form below.</p>
       <div class="contact-form">
         <form action="https://formspree.io/f/xojkplda" method="POST">
           <input type="text" name="name" placeholder="Name" required>
           <input type="email" name="email" placeholder="Email" required>
-          <textarea name="message" placeholder="What can we build for you?" required></textarea>
-          <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Send
-            Message</button>
+          <textarea name="message" placeholder="Tell me about your coaching business" required></textarea>
+          <button type="submit" class="btn-main" style="width: 100%; cursor: pointer;">Send Message</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 YourBloom Studio · Based in Panama · EST Timezone</p>
-    <p style="margin-top: 10px;">Notion Systems · AI Automations · Lead Generation</p>
+    <p>&copy; 2026 YourBloom Studio · Based in Panama · Serving Global Coaches</p>
+    <p style="margin-top: 10px; font-size: 0.7rem;">Notion Systems · AI Automations · Workflow Design</p>
   </footer>
 
 </body>
