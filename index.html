@@ -1272,7 +1272,8 @@
           <a class="btn-outline" href="#" onclick="showPage('contact')">Work with us</a>
         </div>
       </div>
-      <div class="hero-image">
+      <div class="hero-image" style="position:relative;">
+      <div style="position:absolute; inset:0; background-image: radial-gradient(circle, rgba(201,64,112,.06) 1px, transparent 1px); background-size: 24px 24px; pointer-events:none;"></div>
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="hero-mockup">
@@ -1351,6 +1352,10 @@
 
     <!-- FEATURED PRODUCTS -->
     <section class="section">
+      <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="1.5"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 00-1.11-1.79l-1.78-.9A2 2 0 0115 10.76V6h1a2 2 0 000-4H8a2 2 0 000 4h1v4.76a2 2 0 01-1.11 1.79l-1.78.9A2 2 0 005 15.24V17z"/></svg>
+        <span style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); font-weight:500;">Pinned by creator</span>
+      </div>
       <p class="section-eyebrow">Our Systems</p>
       <h2 class="section-title">Everything your business needs.<br><em>One workspace.</em></h2>
       <p class="section-sub">Notion OS templates and AI automations built for coaches, consultants, and online experts.
@@ -1714,18 +1719,9 @@
         <p class="hero-sub">YourBloom Studio is a small team based in Panama. We build Notion systems and AI automations
           for coaches and online experts who want to run their business without the chaos.</p>
       </div>
-      <div class="about-hero-img">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" />
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(60 200 200)" />
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" transform="rotate(120 200 200)" />
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(180 200 200)" />
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" transform="rotate(240 200 200)" />
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(300 200 200)" />
-          <circle cx="200" cy="200" r="46" fill="#faf5f0" opacity=".6" />
-          <circle cx="200" cy="200" r="26" fill="#c94070" opacity=".5" />
-          <circle cx="200" cy="200" r="10" fill="#faf5f0" opacity=".8" />
-        </svg>
+      <div class="about-hero-img" style="overflow:hidden; position:relative;">
+        <img src="about-me.jpg" alt="Mariel and Artem" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+        <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,64,112,.08) 0%, transparent 60%);"></div>
       </div>
     </div>
 
@@ -1744,8 +1740,9 @@
         <div>
           <!-- ФОТОГРАФИЯ НА СТРАНИЦЕ О НАС -->
           <div
-            style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; overflow: hidden;">
-            <img src="about-me.jpg" alt="Mariel and Artem" style="width: 100%; height: 100%; object-fit: cover;">
+            style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; overflow: hidden; position:relative;">
+            <img src="about-me.jpg" alt="Mariel and Artem" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+            <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(to top, rgba(250,245,240,.3), transparent);"></div>
           </div>
         </div>
       </div>
@@ -1929,11 +1926,11 @@
         <h4>Studio</h4>
         <a onclick="showPage('about')">About us</a>
         <a onclick="showPage('contact')">Contact</a>
-        <a href="https://instagram.com/yourbloom.site" target="_blank">Instagram</a>
+        <a href="https://instagram.com/yourbloom.site" target="_blank">Instagram @yourbloom.site</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a>
+        <a href="/cdn-cgi/l/email-protection#1078757c7c7f50697f6562727c7f7f7d3e63796475"><span class="__cf_email__" data-cfemail="8be3eee7e7e4cbf2e4fef9e9e7e4e4e6a5f8e2ffee">[email&#160;protected]</span></a>
         <a href="https://wa.me/50763958484" target="_blank">WhatsApp</a>
         <a>Panama · EST timezone</a>
       </div>
@@ -1944,7 +1941,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + name).classList.add('active');
@@ -1989,19 +1986,4 @@
       }).catch(error => {
         btn.textContent = 'Error. Please try again';
         btn.style.background = '#dc3545';
-        setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; }, 3000);
-      });
-    }
-
-    // Filter buttons on shop page
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-  </script>
-
-</body>
-
-</html>
+        setTimeout(() => { btn.textContent = originalText; btn.
