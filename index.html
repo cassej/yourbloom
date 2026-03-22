@@ -660,10 +660,6 @@
       font-weight: 300;
     }
 
-    .step-connector {
-      display: none;
-    }
-
     /* ── ABOUT SPLIT ── */
     .about-split {
       display: grid;
@@ -685,12 +681,13 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      /* Важно для скругления углов фото */
     }
 
-    .about-img svg {
-      width: 100px;
-      height: 100px;
-      opacity: .4;
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .about-badge {
@@ -1455,18 +1452,9 @@
     <section class="section">
       <div class="about-split">
         <div class="about-img-wrap">
+          <!-- ФОТОГРАФИЯ НА ГЛАВНОЙ СТРАНИЦЕ -->
           <div class="about-img">
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".7" transform="rotate(60 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".85" transform="rotate(120 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".7" transform="rotate(180 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".85" transform="rotate(240 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".7" transform="rotate(300 200 200)" />
-              <circle cx="200" cy="200" r="46" fill="#faf5f0" />
-              <circle cx="200" cy="200" r="26" fill="#c94070" />
-              <circle cx="200" cy="200" r="10" fill="#faf5f0" />
-            </svg>
+            <img src="about-me.jpg" alt="Mariel and Artem">
           </div>
           <div class="about-badge">
             <span class="about-badge-num">4+</span>
@@ -1754,19 +1742,10 @@
             tools that make running an online business feel calm instead of chaotic.</p>
         </div>
         <div>
+          <!-- ФОТОГРАФИЯ НА СТРАНИЦЕ О НАС -->
           <div
-            style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;">
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(60 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" transform="rotate(120 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(180 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" transform="rotate(240 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(300 200 200)" />
-              <circle cx="200" cy="200" r="46" fill="#faf5f0" />
-              <circle cx="200" cy="200" r="26" fill="#c94070" />
-              <circle cx="200" cy="200" r="10" fill="#faf5f0" />
-            </svg>
+            style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; overflow: hidden;">
+            <img src="about-me.jpg" alt="Mariel and Artem" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
       </div>
@@ -1884,7 +1863,6 @@
           </div>
         </div>
 
-        <!-- Formspree connected form -->
         <form action="https://formspree.io/f/xojkplda" method="POST" class="contact-form"
           onsubmit="handleFormspreeSubmit(event)">
           <div class="form-group">
