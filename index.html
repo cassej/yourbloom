@@ -2087,7 +2087,22 @@
       }).catch(error => {
         btn.textContent = 'Error. Please try again';
         btn.style.background = '#dc3545';
-        setTimeout(() => { btn.textContent = originalText; btn<!-- FOOTER -->
+        setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; }, 3000);
+      });
+    }
+  });
+}
+
+// Filter buttons on shop page
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+
+<!-- FOOTER -->
 <footer>
   <div style="background:rgba(255,255,255,.04);border-bottom:1px solid rgba(250,245,240,.08);padding:20px 8%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
     <p style="font-size:13px;color:rgba(250,245,240,.4);font-weight:300;">Follow us & reach out directly</p>
