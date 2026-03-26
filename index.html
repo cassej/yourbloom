@@ -681,7 +681,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      /* Важно для скругления углов фото */
     }
 
     .about-img img {
@@ -1223,6 +1222,71 @@
       transition: all .3s;
     }
 
+    /* ── WORK WITH US ── */
+    .contact-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cbtn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      background: rgba(250, 245, 240, 0.05);
+      /* Легкий светлый фон */
+      border: 1px solid rgba(250, 245, 240, 0.1);
+      color: var(--cream);
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .cbtn:hover {
+      background: rgba(250, 245, 240, 0.1);
+      border-color: var(--rose);
+      transform: translateY(-2px);
+    }
+
+    .cbtn-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(250, 245, 240, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cbtn-label {
+      font-size: 11px;
+      color: var(--tan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .cbtn.primary {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: var(--cream);
+    }
+
+    .cbtn.primary .cbtn-icon {
+      background: var(--cream);
+    }
+
+    .cbtn.primary .cbtn-label {
+      color: rgba(250, 245, 240, 0.7);
+    }
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -1265,13 +1329,17 @@
       }
     }
 
+    /* Мобильная сетка кнопок строго в один столбец */
+    @media(max-width: 768px) {
+      .contact-btn-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ── LOGO SVG INLINE ── */
     .logo-svg-inline {
       display: inline-block;
     }
-
-    /* ── WORK WITH US ── */
-    <div style="background:var(--deep);padding:64px 8%;"><div class="contact-btn-grid">< !-- АКЦЕНТНАЯ КНОПКА (WhatsApp) --><a href="https://wa.me/50763958484" target="_blank" class="cbtn primary"><div class="cbtn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--rose)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /><path d="M12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" /></svg></div><div><div class="cbtn-label">Fastest reply</div>WhatsApp+507 6395-8484</div></a>< !-- ВТОРОСТЕПЕННЫЕ КНОПКИ --><a href="https://t.me/yourbloomstudio" target="_blank" class="cbtn"><div class="cbtn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--cream)"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" /></svg></div><div><div class="cbtn-label">Telegram</div>@yourbloomstudio</div></a><a href="https://instagram.com/yourbloom.site" target="_blank" class="cbtn"><div class="cbtn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></div><div><div class="cbtn-label">Instagram · DM "COACH" </div>@yourbloom.site</div></a><a href="mailto:hello@yourbloom.site" class="cbtn"><div class="cbtn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 7 10-7" /></svg></div><div><div class="cbtn-label">Email</div>hello@yourbloom.site</div></a></div></div>
   </style>
 </head>
 
@@ -1334,7 +1402,7 @@
           </p>
           <div class="hero-btns">
             <a class="btn-primary" href="#" onclick="showPage('shop')">Explore templates</a>
-            <a class="btn-outline" href="#" onclick="showPage('contact')">Work with us</a>
+            <a class="btn-outline" href="#" onclick="showPage('work')">Work with us</a>
           </div>
         </div>
         <div class="hero-image">
@@ -1461,7 +1529,8 @@
             <div class="product-body">
               <span class="product-tag">Content</span>
               <h3 class="product-name">Social Media Content System</h3>
-              <p class="product-desc">30-day content calendar with AI prompts built in. Write faster, post consistently,
+              <p class="product-desc">30-day content calendar with AI prompts built in. Write faster, post
+                consistently,
                 never run out of ideas.</p>
               <div class="product-footer">
                 <span class="product-price">$45</span>
@@ -1524,7 +1593,6 @@
       <section class="section">
         <div class="about-split">
           <div class="about-img-wrap">
-            <!-- ФОТОГРАФИЯ НА ГЛАВНОЙ СТРАНИЦЕ -->
             <div class="about-img">
               <img src="about-me.jpg" alt="Mariel and Artem">
             </div>
@@ -1774,8 +1842,7 @@
         </h2>
         <p class="section-sub" style="color: rgba(250,245,240,.5);">We build custom Notion systems and AI automations
           tailored to your exact workflow. $150 · 3 days · Pay on delivery.</p>
-        <a class="btn-primary" href="#" onclick="showPage('contact')" style="margin-top:8px">DM "COACH" on Instagram
-          →</a>
+        <a class="btn-primary" href="#" onclick="showPage('work')" style="margin-top:8px">DM "COACH" on Instagram →</a>
       </section>
 
     </div><!-- /shop -->
@@ -1822,7 +1889,6 @@
               tools that make running an online business feel calm instead of chaotic.</p>
           </div>
           <div>
-            <!-- ФОТОГРАФИЯ НА СТРАНИЦЕ О НАС -->
             <div
               style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; overflow: hidden;">
               <img src="about-me.jpg" alt="Mariel and Artem" style="width: 100%; height: 100%; object-fit: cover;">
@@ -1873,110 +1939,6 @@
 
     </div><!-- /about -->
 
-
-    <!-- ═══════════════ CONTACT PAGE ═══════════════ -->
-    <div class="page" id="page-contact">
-
-      <div class="shop-hero">
-        <p class="section-eyebrow">Get in touch</p>
-        <h1 class="section-title">Let's build something<br><em>together</em></h1>
-        <p class="section-sub">Ready to stop managing your business from your inbox? Send us a message or DM "COACH" on
-          Instagram.</p>
-      </div>
-
-      <section class="section">
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>We'd love to hear from you</h3>
-            <p>Whether you need a custom Notion system, have a question about a template, or just want to say hello — we
-              respond within 24 hours on business days.</p>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
-                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-item-text">WhatsApp / Telegram</div>
-                <div class="contact-item-label">+507 6395-8484</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M2 7l10 7 10-7" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-item-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                    data-cfemail="5b333e3737341b22342e2939373434367528322f3e">[email&#160;protected]</a></div>
-                <div class="contact-item-label">Email</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-item-text">@yourbloom.site</div>
-                <div class="contact-item-label">Instagram · DM "COACH" to start</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M12 7v5l3 1.5" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-item-text">EST timezone · Panama</div>
-                <div class="contact-item-label">Response within 24h</div>
-              </div>
-            </div>
-          </div>
-
-          <form action="https://formspree.io/f/xojkplda" method="POST" class="contact-form"
-            onsubmit="handleFormspreeSubmit(event)">
-            <div class="form-group">
-              <label>Your name</label>
-              <input type="text" name="name" placeholder="Sarah" required>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="sarah@example.com" required>
-            </div>
-            <div class="form-group">
-              <label>What do you need?</label>
-              <select name="service">
-                <option>Custom Notion system</option>
-                <option>Coach OS template</option>
-                <option>Social Media Content System</option>
-                <option>AI automation</option>
-                <option>Something else</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Tell us more</label>
-              <textarea name="message" placeholder="Tell us about your business and what you're trying to solve..."
-                required></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="align-self:flex-start">Send message →</button>
-          </form>
-        </div>
-      </section>
-
-    </div><!-- /contact -->
-
     <!-- ═══════════════ WORK WITH US ═══════════════ -->
     <div class="page" id="page-work">
 
@@ -1989,46 +1951,58 @@
 
       <div style="background:var(--deep);padding:48px 8%;">
         <div class="contact-btn-grid">
-          <a href="https://wa.me/50763958484" target="_blank" class="cbtn" style="background:#25D366;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-              <path
-                d="M12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
-            </svg>
+
+          <a href="https://wa.me/50763958484" target="_blank" class="cbtn primary">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--rose)">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+            </div>
             <div>
               <div class="cbtn-label">Fastest reply</div>WhatsApp +507 6395-8484
             </div>
           </a>
-          <a href="https://t.me/yourbloomstudio" target="_blank" class="cbtn" style="background:#2AABEE;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-              <path
-                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" />
-            </svg>
+
+          <a href="https://t.me/yourbloomstudio" target="_blank" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--cream)">
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" />
+              </svg>
+            </div>
             <div>
               <div class="cbtn-label">Telegram</div>@yourbloomstudio
             </div>
           </a>
-          <a href="https://instagram.com/yourbloom.site" target="_blank" class="cbtn"
-            style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
+
+          <a href="https://instagram.com/yourbloom.site" target="_blank" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </div>
             <div>
               <div class="cbtn-label">Instagram · DM "COACH"</div>@yourbloom.site
             </div>
           </a>
-          <a href="mailto:hello@yourbloom.site" class="cbtn" style="background:var(--rose);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="M2 7l10 7 10-7" />
-            </svg>
+
+          <a href="mailto:hello@yourbloom.site" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 7l10 7 10-7" />
+              </svg>
+            </div>
             <div>
               <div class="cbtn-label">Email</div>hello@yourbloom.site
             </div>
           </a>
+
         </div>
       </div>
 
@@ -2176,7 +2150,7 @@
         <div class="footer-col">
           <h4>Studio</h4>
           <a onclick="showPage('about')">About us</a>
-          <a onclick="showPage('contact')">Contact</a>
+          <a onclick="showPage('work')">Contact</a>
           <a onclick="showPage('shop')">Shop</a>
           <a href="https://yourbloom.site">yourbloom.site</a>
         </div>
