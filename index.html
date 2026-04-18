@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO & Socials -->
-  <title>YourBloom Studio — Notion Systems & AI Automations</title>
-  <meta name="description"
-    content="We build custom Notion operating systems and AI automations for coaches and online experts. Done for you in 3 days. Stop managing chaos.">
+ <title>Maria | Notion Business OS & AI Automations for Coaches</title>
+  <meta name="description" content="I build custom Notion operating systems and AI automations for coaches. Save 10+ hours/week. 3-day delivery. 14 days support.">
   <meta property="og:title" content="YourBloom Studio — Notion & AI for Coaches">
   <meta property="og:description" content="Bespoke Notion architecture for visionary founders. From $15.">
   <meta property="og:image" content="about-me.jpg">
@@ -1329,12 +1328,20 @@
       }
     }
 
-    /* Мобильная сетка кнопок строго в один столбец */
-    @media(max-width: 768px) {
-      .contact-btn-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+/* Мобильная адаптация */
+@media(max-width: 768px) {
+  /* Твоё старое правило (кнопки контактов в столбец) */
+  .contact-btn-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /*  Новое правило (кнопки в шапке аккуратно переносятся) */
+  .nav-cta { 
+    display: flex; 
+    gap: 8px; 
+    flex-wrap: wrap; 
+  }
+}
 
     /* ── LOGO SVG INLINE ── */
     .logo-svg-inline {
@@ -1771,7 +1778,7 @@
         <div class="about-split">
           <div class="about-img-wrap">
             <div class="about-img">
-              <img src="about-me.jpg" alt="Mariel">
+              <img src="about-me.jpg" alt="Maria">
             </div>
             <div class="about-badge">
               <span class="about-badge-num">17+</span>
@@ -1807,9 +1814,7 @@
           </div>
           <div class="testi-card">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-text">"I've tried to build this myself for months. They did it in 3 days and it's better
-              than
-              anything I could have made."</p>
+            <p class="testi-text">"I've tried to build this myself for months. She delivered it in 3 days and it's better than anything I could have made."</p>
             <div class="testi-author">Ana L. — Nutritionist, Panama</div>
           </div>
         </div>
@@ -2137,8 +2142,8 @@
       </section>
 
       <section class="section-sm" style="background:var(--warm)">
-        <p class="section-eyebrow">What we stand for</p>
-        <h2 class="section-title">Our values</h2>
+        <p class="section-eyebrow">What I stand for</p>
+        <h2 class="section-title">My values</h2>
         <div class="values-grid" style="margin-top:48px">
           <div class="value-card">
             <div class="value-icon">
@@ -2147,9 +2152,7 @@
               </svg>
             </div>
             <h3 class="value-title">Simplicity first</h3>
-            <p class="value-desc">We build systems that are easy to actually use. If it's complicated, it won't get
-              used.
-              We always choose clarity over cleverness.</p>
+            <p class="value-desc">I build systems that are easy to actually use. If it's complicated, it won't get used. I always choose clarity over cleverness.</p>
           </div>
           <div class="value-card">
             <div class="value-icon">
@@ -2159,8 +2162,7 @@
               </svg>
             </div>
             <h3 class="value-title">Time is money</h3>
-            <p class="value-desc">Every hour you spend on admin is an hour not spent on clients. We automate the
-              repetitive so you can focus on what matters.</p>
+            <p class="value-desc">Every hour you spend on admin is an hour not spent on clients. I automate the repetitive so you can focus on what matters.</p>
           </div>
           <div class="value-card">
             <div class="value-icon">
@@ -2170,8 +2172,7 @@
               </svg>
             </div>
             <h3 class="value-title">Delivered with care</h3>
-            <p class="value-desc">We treat every project like it's our own business. 3-day turnaround, 1 free revision,
-              pay only when you're happy.</p>
+            <p class="value-desc">I treat every project like it's my own business. 3-day turnaround, 1 free revision, pay only when you're happy.</p>
           </div>
         </div>
       </section>
