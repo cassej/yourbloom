@@ -1,29 +1,1543 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YourBloom Studio — Notion Business OS & AI Automations for Coaches</title>
+
+  <!-- SEO & Socials -->
+ <title>Maria | Notion Business OS & AI Automations for Coaches</title>
   <meta name="description" content="I build custom Notion operating systems and AI automations for coaches. Save 10+ hours/week. 3-day delivery. 14 days support.">
-  <meta property="og:title" content="YourBloom Studio — Notion Business OS & AI Automations for Coaches">
-  <meta property="og:description" content="I build custom Notion operating systems and AI automations for coaches. Save 10+ hours/week. 3-day delivery. 14 days support.">
+  <meta property="og:title" content="YourBloom Studio — Notion & AI for Coaches">
+  <meta property="og:description" content="Bespoke Notion architecture for visionary founders. From $15.">
   <meta property="og:image" content="about-me.jpg">
   <meta property="og:url" content="https://yourbloom.site">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC226LY14"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC226LY14"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-PQC226LY14');
   </script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23c94070'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(60 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(120 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(180 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(240 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(300 200 200)'/%3E%3Ccircle cx='200' cy='200' r='46' fill='%23faf5f0'/%3E%3Ccircle cx='200' cy='200' r='26' fill='%23c94070'/%3E%3Ccircle cx='200' cy='200' r='10' fill='%23faf5f0'/%3E%3C/svg%3E">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23c94070'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(60 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(120 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(180 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(240 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(300 200 200)'/%3E%3Ccircle cx='200' cy='200' r='46' fill='%23faf5f0'/%3E%3Ccircle cx='200' cy='200' r='26' fill='%23c94070'/%3E%3Ccircle cx='200' cy='200' r='10' fill='%23faf5f0'/%3E%3C/svg%3E">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <style>
-    /* nav active state */
-    .nav-links a.nav-active { color: var(--rose); font-weight: 500; }
+    :root {
+      --rose: #c94070;
+      --rose-light: #e8607f;
+      --rose-pale: #f0dce4;
+      --rose-blush: #fdf0f5;
+      --cream: #faf5f0;
+      --warm: #f5ede4;
+      --gold: #b8860b;
+      --gold-light: #d4a017;
+      --tan: #d4b483;
+      --bark: #8a7968;
+      --deep: #2a1520;
+      --text: #3d2b35;
+      --muted: #8a7968;
+      --border: #e8ddd5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── PAGE ROUTER ── */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--deep);
+      color: var(--cream);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .announce a {
+      color: var(--tan);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-logo svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-size: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--rose);
+    }
+
+    .nav-cta {
+      background: var(--rose);
+      color: var(--cream) !important;
+      padding: 9px 20px;
+      border-radius: 24px;
+      font-weight: 500 !important;
+      transition: background .2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--rose-light) !important;
+      color: var(--cream) !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 88vh;
+      align-items: center;
+    }
+
+    .hero-content {
+      padding: 80px 6% 80px 8%;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--deep);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--rose);
+      color: var(--cream);
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--rose-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--rose);
+      color: var(--rose);
+      padding: 13px 28px;
+      border-radius: 32px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      background: transparent;
+      transition: all .2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: var(--rose-blush);
+    }
+
+    .hero-image {
+      background: var(--rose-pale);
+      height: 100%;
+      min-height: 88vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-mockup {
+      width: 78%;
+      max-width: 460px;
+      background: var(--cream);
+      border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(42, 21, 32, .14);
+      padding: 28px;
+      position: relative;
+    }
+
+    .mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mockup-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .mockup-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .mockup-dot:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .mockup-dot:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .mockup-dot:nth-child(3) {
+      background: #28c840;
+    }
+
+    .mockup-title-bar {
+      flex: 1;
+      height: 22px;
+      background: var(--warm);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .mockup-cover {
+      background: linear-gradient(135deg, var(--rose-pale) 0%, var(--warm) 100%);
+      height: 90px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mockup-cover svg {
+      width: 42px;
+      height: 42px;
+      opacity: .6;
+    }
+
+    .mockup-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 14px;
+    }
+
+    .mockup-nav {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .mockup-btn {
+      background: var(--rose-pale);
+      border: 1px solid var(--rose-pale);
+      color: var(--rose);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mockup-card {
+      background: var(--warm);
+      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .mockup-card-icon {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .mockup-card-label {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .mockup-card-val {
+      font-size: 13px;
+      color: var(--deep);
+      font-weight: 500;
+    }
+
+    /* floating blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(201, 64, 112, .08);
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 280px;
+      height: 280px;
+      top: -60px;
+      right: -60px;
+    }
+
+    .blob-2 {
+      width: 180px;
+      height: 180px;
+      bottom: 40px;
+      left: 30px;
+      background: rgba(184, 134, 11, .06);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--deep);
+      padding: 20px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .trust-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--tan);
+    }
+
+    .trust-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 245, 240, .5);
+      margin-top: 2px;
+    }
+
+    /* ── SECTION COMMON ── */
+    .section {
+      padding: 96px 8%;
+    }
+
+    .section-sm {
+      padding: 64px 8%;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 500;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--deep);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 56px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PRODUCTS GRID ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all .25s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(42, 21, 32, .1);
+      border-color: var(--rose-pale);
+    }
+
+    .product-img {
+      height: 180px;
+      background: var(--rose-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img-inner {
+      width: 76%;
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 14px;
+      box-shadow: 0 8px 30px rgba(42, 21, 32, .1);
+    }
+
+    .product-img-row {
+      height: 7px;
+      background: var(--rose-pale);
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+
+    .product-img-row.short {
+      width: 60%;
+    }
+
+    .product-img-row.rose {
+      background: rgba(201, 64, 112, .25);
+    }
+
+    .product-body {
+      padding: 20px 20px 24px;
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      background: var(--rose-blush);
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--rose);
+    }
+
+    .product-price.free {
+      font-size: 14px;
+      background: rgba(184, 134, 11, .12);
+      color: var(--gold);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .product-link {
+      font-size: 12px;
+      color: var(--rose);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--rose-pale);
+      color: var(--rose);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT SPLIT ── */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--rose-pale);
+      border-radius: 120px 120px 16px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--deep);
+      color: var(--cream);
+      padding: 20px 24px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .about-badge-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--tan);
+      display: block;
+    }
+
+    .about-badge-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-top: 2px;
+    }
+
+    .about-content .section-title {
+      text-align: left;
+    }
+
+    .about-content .section-sub {
+      text-align: left;
+      margin: 0 0 32px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .testi-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      font-weight: 300;
+      margin-bottom: 20px;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+    }
+
+    .testi-author {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── FREE TEMPLATE CTA ── */
+    .freebie-bar {
+      background: var(--rose-pale);
+      padding: 72px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .freebie-content .section-title {
+      text-align: left;
+    }
+
+    .freebie-content .section-sub {
+      text-align: left;
+      margin: 0 0 32px;
+    }
+
+    .freebie-preview {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 50px rgba(42, 21, 32, .1);
+    }
+
+    .freebie-preview-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .freebie-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .freebie-row {
+      background: var(--warm);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .freebie-row-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose);
+      flex-shrink: 0;
+    }
+
+    /* ── EMAIL CAPTURE ── */
+    .email-capture {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+    }
+
+    .email-capture input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 1.5px solid var(--rose-pale);
+      border-right: none;
+      border-radius: 32px 0 0 32px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+    }
+
+    .email-capture input:focus {
+      border-color: var(--rose);
+    }
+
+    .email-capture button {
+      background: var(--rose);
+      color: var(--cream);
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 32px 32px 0;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+    }
+
+    .email-capture button:hover {
+      background: var(--rose-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      color: var(--cream);
+    }
+
+    .footer-social-bar {
+      padding: 16px 8%;
+      border-bottom: 1px solid rgba(250, 245, 240, .08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-social-bar p {
+      font-size: 12px;
+      color: rgba(250, 245, 240, .35);
+      letter-spacing: 0.06em;
+      font-weight: 300;
+    }
+
+    .footer-social-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(250, 245, 240, .6);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 6px 14px;
+      border: 1px solid rgba(250, 245, 240, .14);
+      border-radius: 20px;
+      transition: all .2s;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-pill:hover {
+      color: var(--cream);
+      border-color: rgba(250, 245, 240, .35);
+      background: rgba(250, 245, 240, .06);
+    }
+
+    .footer-main {
+      padding: 52px 8% 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(250, 245, 240, .45);
+      max-width: 240px;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .footer-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+
+    .footer-logo-sub {
+      font-size: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 245, 240, .4);
+      display: block;
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: rgba(250, 245, 240, .5);
+      text-decoration: none;
+      margin-bottom: 11px;
+      transition: color .2s;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover {
+      color: var(--cream);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(250, 245, 240, .08);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: rgba(250, 245, 240, .25);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SHOP PAGE ── */
+    .shop-hero {
+      background: var(--rose-pale);
+      padding: 72px 8% 64px;
+      text-align: center;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 32px 8% 0;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 24px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--rose);
+      color: var(--cream);
+      border-color: var(--rose);
+    }
+
+    /* ── ABOUT PAGE ── */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+
+    .about-hero-content {
+      padding: 80px 6% 80px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-hero-img {
+      background: var(--rose-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-hero-img svg {
+      width: 140px;
+      height: 140px;
+      opacity: .3;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      background: var(--warm);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+    }
+
+    .value-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--rose-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .value-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+
+    .value-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT PAGE ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--rose);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--rose-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text {
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .contact-item-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── MOBILE MENU TOGGLE ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ── WORK WITH US ── */
+    .contact-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cbtn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      background: rgba(250, 245, 240, 0.05);
+      /* Легкий светлый фон */
+      border: 1px solid rgba(250, 245, 240, 0.1);
+      color: var(--cream);
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .cbtn:hover {
+      background: rgba(250, 245, 240, 0.1);
+      border-color: var(--rose);
+      transform: translateY(-2px);
+    }
+
+    .cbtn-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(250, 245, 240, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cbtn-label {
+      font-size: 11px;
+      color: var(--tan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .cbtn.primary {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: var(--cream);
+    }
+
+    .cbtn.primary .cbtn-icon {
+      background: var(--cream);
+    }
+
+    .cbtn.primary .cbtn-label {
+      color: rgba(250, 245, 240, 0.7);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        min-height: 50vw;
+      }
+
+      .about-split,
+      .freebie-bar,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid,
+      .steps,
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .about-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-bar {
+        gap: 32px;
+      }
+    }
+
+/* Мобильная адаптация */
+@media(max-width: 768px) {
+  /* Твоё старое правило (кнопки контактов в столбец) */
+  .contact-btn-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /*  Новое правило (кнопки в шапке аккуратно переносятся) */
+  .nav-cta { 
+    display: flex; 
+    gap: 8px; 
+    flex-wrap: wrap; 
+  }
+}
+
+    /* ── LOGO SVG INLINE ── */
+    .logo-svg-inline {
+      display: inline-block;
+    }
+
+    /* ── CARD PREVIEWS (from fixes) ── */
+    .card-preview {
+      width: 100%;
+      aspect-ratio: 16/9;
+      padding: 18px 20px 14px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .preview-coach {
+      background: #1a0e14;
+    }
+
+    .preview-coach .pc-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #c94070;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .preview-coach .pc-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      font-size: 11px;
+      color: rgba(250, 245, 240, .5);
+    }
+
+    .preview-coach .pc-row span:last-child {
+      color: #faf5f0;
+      font-weight: 500;
+    }
+
+    .preview-coach .pc-badge {
+      display: inline-block;
+      background: rgba(201, 64, 112, .2);
+      color: #e87da0;
+      border-radius: 10px;
+      padding: 2px 8px;
+      font-size: 9px;
+      margin-top: 8px;
+    }
+
+    .preview-portal {
+      background: #f5ede4;
+    }
+
+    .preview-portal .pp-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #8a7968;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .preview-portal .pp-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(61, 43, 53, .1);
+      font-size: 11px;
+      color: #3d2b35;
+    }
+
+    .preview-portal .pp-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #c94070;
+      flex-shrink: 0;
+    }
+
+    .preview-content {
+      background: #0f1a2e;
+    }
+
+    .preview-content .pct-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #5b9bd5;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .preview-content .pct-week {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .preview-content .pct-day {
+      flex: 1;
+      padding: 4px 0;
+      text-align: center;
+      font-size: 8px;
+      border-radius: 3px;
+      background: rgba(91, 155, 213, .12);
+      color: rgba(232, 240, 252, .35);
+    }
+
+    .preview-content .pct-day.on {
+      background: rgba(91, 155, 213, .3);
+      color: #a8d8f0;
+      font-weight: 700;
+    }
+
+    .preview-content .pct-text {
+      font-size: 10px;
+      color: rgba(232, 240, 252, .45);
+      line-height: 1.5;
+    }
+
+    .preview-bundle {
+      background: #1c1408;
+    }
+
+    .preview-bundle .pb-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #b8860b;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .preview-bundle .pb-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      font-size: 11px;
+      color: rgba(253, 248, 240, .7);
+    }
+
+    .preview-bundle .pb-check {
+      color: #b8860b;
+      font-size: 10px;
+    }
+
+    .preview-bundle .pb-save {
+      display: inline-block;
+      background: rgba(184, 134, 11, .2);
+      color: #d4a017;
+      border-radius: 10px;
+      padding: 2px 8px;
+      font-size: 9px;
+      margin-top: 8px;
+    }
+
+    .preview-free {
+      background: #edf7ed;
+    }
+
+    .preview-free .pf-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #28a745;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .preview-free .pf-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(26, 58, 26, .08);
+      font-size: 11px;
+      color: #1a3a1a;
+    }
+
+    .preview-free .pf-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #28a745;
+      flex-shrink: 0;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ANNOUNCEMENT -->
@@ -31,6 +1545,7 @@
     ✨ New: The Automated Studio — Coach OS + Portal + AI Bot — <a href="/shop">View now →</a>
   </div>
 
+  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="/">
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
@@ -51,16 +1566,22 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="/shop">Shop</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f181e69a70ca6582e3da64?pvs=74" target="_blank" class="nav-cta" style="background:transparent;border:1.5px solid var(--rose);color:var(--rose) !important;">Free Demo</a></li>
-      <li><a href="/contact" class="nav-cta">Work with me</a></li>
+     <li><a href="/shop">Shop</a></li>
+     <li><a href="/about">About</a></li>
+     <li><a
+      href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f181e69a70ca6582e3da64?pvs=74"
+      target="_blank" class="nav-cta"
+      style="background:transparent;border:1.5px solid var(--rose);color:var(--rose) !important;">Free Demo</a></li>
+     <li><a href="/contact" class="nav-cta">Work with me</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
+  <!-- ═══════════════ HOME PAGE ═══════════════ -->
+  <div id="page-wrapper">
+    <div class="page active" id="page-home">
 
       <!-- HERO -->
       <section class="hero">
@@ -74,8 +1595,8 @@
             I build custom Notion operating systems and AI automations for coaches and online experts — so you can focus on client transformation, not administration.
           </p>
           <div class="hero-btns">
-           <a class="btn-primary" href="/shop" >Explore systems</a>
-           <a class="btn-outline" href="/contact" >Work with me</a>
+           <a class="btn-primary" href="/shop">Explore systems</a>
+           <a class="btn-outline" href="/contact">Work with me</a>
           </div>
         </div>
         <div class="hero-image">
@@ -166,25 +1687,27 @@
         <p class="section-sub">Business Operating Systems and AI automations built for coaches, consultants, and online experts. Save 10+ hours every week.
         </p>
 
-      <a class="product-card" href="/shop">
-        <div class="product-img" style="background: var(--rose-pale);">
-        <div class="product-img-inner">
-      <div class="product-img-row rose"></div>
-      <div class="product-img-row"></div>
-      <div class="product-img-row short"></div>
-      <div class="product-img-row"></div>
-        </div>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Most Popular</span>
-        <h3 class="product-name">The Automated Studio</h3>
-        <p class="product-desc">Coach OS + Client Portal + 3 Zapier automations + AI bot setup. Your complete business operating system.</p>
-      <div class="product-footer">
-       <span class="product-price">$450</span>
-        <span class="product-link">View details →</span>
-       </div>
-      </div>
-      </a>
+        <div class="products-grid">
+
+          <a class="product-card" href="/shop">
+            <div class="product-img" style="background: var(--rose-pale);">
+              <div class="product-img-inner">
+                <div class="product-img-row rose"></div>
+                <div class="product-img-row"></div>
+                <div class="product-img-row short"></div>
+                <div class="product-img-row"></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">⭐ Most Popular</span>
+              <h3 class="product-name">The Automated Studio</h3>
+              <p class="product-desc">Coach OS + Client Portal + 3 Zapier automations + AI bot setup. Your complete business operating system.</p>
+              <div class="product-footer">
+                <span class="product-price">$450</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </a>
 
           <a class="product-card" href="/shop">
             <div class="product-img" style="background: #f0e8f5;">
@@ -200,13 +1723,13 @@
               <h3 class="product-name">Personal AI Expert Bot</h3>
               <p class="product-desc">Your AI assistant that answers clients 24/7, qualifies leads, and handles FAQs — without you lifting a finger.</p>
               <div class="product-footer">
-                <span class="product-price">$250</span>
+                <span class="product-price">$250–500</span>
                 <span class="product-link">View →</span>
               </div>
             </div>
           </a>
 
-          <a class="product-card" href="/" >
+          <a class="product-card" href="/shop">
             <div class="product-img" style="background: #e8e4f0;">
               <div class="product-img-inner">
                 <div class="product-img-row" style="background:#ccc5e0"></div>
@@ -224,6 +1747,7 @@
               </div>
             </div>
           </a>
+
         </div>
       </section>
 
@@ -342,7 +1866,468 @@
 
     </div><!-- /home -->
 
+
+    <!-- ═══════════════ SHOP PAGE ═══════════════ -->
+    <div class="page" id="page-shop">
+
+      <div class="shop-hero">
+        <p class="section-eyebrow">Services & Systems</p>
+        <h1 class="section-title">Business Operating Systems<br><em>& AI Automations</em></h1>
+        <p class="section-sub">Done-for-you Notion workspaces and AI tools built for coaches and online experts. Delivered in 3 days. 14 days support included.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="coaching">Coaching OS</button>
+        <button class="filter-btn" data-filter="ai tools">AI Tools</button>
+        <button class="filter-btn" data-filter="content">Content</button>
+        <button class="filter-btn" data-filter="audit">Quick Wins</button>
+        <button class="filter-btn" data-filter="free">Free</button>
+      </div>
+
+      <section class="section">
+        <div class="products-grid">
+
+          <!-- ── THE AUTOMATED STUDIO (flagship) ── -->
+          <div class="product-card" data-category="coaching">
+            <div class="card-preview preview-bundle">
+              <div class="pb-label">The Automated Studio</div>
+              <div class="pb-row"><span class="pb-check">✓</span> Coach OS (CRM, Sessions, Finance)</div>
+              <div class="pb-row"><span class="pb-check">✓</span> Client Portal</div>
+              <div class="pb-row"><span class="pb-check">✓</span> 3 Zapier Automations</div>
+              <div class="pb-row"><span class="pb-check">✓</span> AI Bot Setup</div>
+              <div class="pb-save">⭐ Best Value</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">⭐ Flagship</span>
+              <h3 class="product-name">The Automated Studio</h3>
+              <p class="product-desc">Your complete business operating system. Coach OS + Client Portal + 3 Zapier automations + AI bot. Save 10+ hours every week.</p>
+              <div class="product-footer">
+                <span class="product-price">$450</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── THE FOUNDATION ── -->
+          <div class="product-card" data-category="coaching">
+            <div class="card-preview preview-coach">
+              <div class="pc-label">The Foundation</div>
+              <div class="pc-row"><span>👥 Client CRM</span><span>✓</span></div>
+              <div class="pc-row"><span>📝 Session Tracker</span><span>✓</span></div>
+              <div class="pc-row"><span>💰 Finance Dashboard</span><span>✓</span></div>
+              <div class="pc-row"><span>🎁 Client Portal</span><span>✓</span></div>
+              <div class="pc-badge">Coach OS + Portal</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Most Popular</span>
+              <h3 class="product-name">The Foundation</h3>
+              <p class="product-desc">Coach OS core system + branded client portal. CRM, session tracker, onboarding, finance dashboard — all connected.</p>
+              <div class="product-footer">
+                <span class="product-price">$185</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── THE CONTENT MASTER ── -->
+          <div class="product-card" data-category="content">
+            <div class="card-preview preview-content">
+              <div class="pct-label">The Content Master</div>
+              <div class="pct-week">
+                <div class="pct-day on">M</div>
+                <div class="pct-day on">T</div>
+                <div class="pct-day on">W</div>
+                <div class="pct-day on">T</div>
+                <div class="pct-day on">F</div>
+                <div class="pct-day">S</div>
+                <div class="pct-day">S</div>
+              </div>
+              <div class="pct-text">1 video → 10 posts + article + email sequence. AI prompts built in for every platform.</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Content</span>
+              <h3 class="product-name">The Content Master</h3>
+              <p class="product-desc">Coach OS + AI content repurposing system + social media pack. Turn 1 piece of content into 10+ touchpoints automatically.</p>
+              <div class="product-footer">
+                <span class="product-price">$220</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── PERSONAL AI EXPERT BOT ── -->
+          <div class="product-card" data-category="ai tools">
+            <div class="card-preview preview-content">
+              <div class="pct-label">AI Expert Bot</div>
+              <div class="pct-week">
+                <div class="pct-day on">M</div>
+                <div class="pct-day on">T</div>
+                <div class="pct-day on">W</div>
+                <div class="pct-day on">T</div>
+                <div class="pct-day on">F</div>
+                <div class="pct-day on">S</div>
+                <div class="pct-day on">S</div>
+              </div>
+              <div class="pct-text">Answers clients 24/7, qualifies leads, and handles FAQs — trained on your voice and methods.</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">AI Tool</span>
+              <h3 class="product-name">Personal AI Expert Bot</h3>
+              <p class="product-desc">Your AI assistant that answers clients 24/7 — trained on your voice, methods, and FAQs. No more repetitive messages.</p>
+              <div class="product-footer">
+                <span class="product-price">$250</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── AI CONTENT REPURPOSING ── -->
+          <div class="product-card" data-category="content ai tools">
+            <div class="card-preview preview-content">
+              <div class="pct-label">Content Repurposing</div>
+              <div class="pct-week">
+                <div class="pct-day on">M</div>
+                <div class="pct-day on">T</div>
+                <div class="pct-day on">W</div>
+                <div class="pct-day">T</div>
+                <div class="pct-day">F</div>
+                <div class="pct-day">S</div>
+                <div class="pct-day">S</div>
+              </div>
+              <div class="pct-text">1 video → 10 posts + blog article + email sequence. Write less. Publish more.</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">AI Tool</span>
+              <h3 class="product-name">AI Content Repurposing System</h3>
+              <p class="product-desc">Turn 1 video into 10 posts + an article + an email sequence. Built-in AI prompts for IG, TikTok, LinkedIn, and email.</p>
+              <div class="product-footer">
+                <span class="product-price">$150</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── AI EMAIL SEQUENCE ── -->
+          <div class="product-card" data-category="ai tools">
+            <div class="card-preview preview-portal">
+              <div class="pp-label">AI Email Sequence</div>
+              <div class="pp-item"><div class="pp-dot"></div>✉️ Welcome email</div>
+              <div class="pp-item"><div class="pp-dot"></div>📖 Value email #1</div>
+              <div class="pp-item"><div class="pp-dot"></div>🎯 Case study email</div>
+              <div class="pp-item"><div class="pp-dot"></div>💌 Sales email</div>
+              <div class="pp-item"><div class="pp-dot"></div>🔄 Follow-up email</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">AI Tool</span>
+              <h3 class="product-name">AI Sales Email Sequence</h3>
+              <p class="product-desc">Personalised, AI-powered email sequences that nurture leads and convert — written in your voice, ready to send.</p>
+              <div class="product-footer">
+                <span class="product-price">$45</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── WORKFLOW AUDIT ── -->
+          <div class="product-card" data-category="audit">
+            <div class="card-preview preview-coach">
+              <div class="pc-label">Workflow Audit</div>
+              <div class="pc-row"><span>⏱️ Time leaks found</span><span>✓</span></div>
+              <div class="pc-row"><span>🔧 Fix map</span><span>✓</span></div>
+              <div class="pc-row"><span>🤖 Automation plan</span><span>✓</span></div>
+              <div class="pc-badge">Perfect first step</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag" style="background:rgba(184,134,11,.1);color:var(--gold)">Quick Win</span>
+              <h3 class="product-name">Workflow Audit</h3>
+              <p class="product-desc">I audit your current workflow, identify time leaks, and give you a clear action plan. The perfect entry point before a full system build.</p>
+              <div class="product-footer">
+                <span class="product-price">$100</span>
+                <span class="product-link">Book now →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── SMART LEAD QUALIFIER ── -->
+          <div class="product-card" data-category="audit ai tools">
+            <div class="card-preview preview-portal">
+              <div class="pp-label">Lead Qualifier</div>
+              <div class="pp-item"><div class="pp-dot"></div>📋 Pre-call questionnaire</div>
+              <div class="pp-item"><div class="pp-dot"></div>🤖 AI qualification scoring</div>
+              <div class="pp-item"><div class="pp-dot"></div>📊 Auto brief for coach</div>
+              <div class="pp-item"><div class="pp-dot"></div>❌ Filters unfit leads</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag" style="background:rgba(184,134,11,.1);color:var(--gold)">Quick Win</span>
+              <h3 class="product-name">Smart Lead Qualifier</h3>
+              <p class="product-desc">AI-powered pre-call screening that filters unfit leads and prepares a brief for every discovery call. Stop wasting time on the wrong clients.</p>
+              <div class="product-footer">
+                <span class="product-price">$75</span>
+                <span class="product-link">View details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── FREE TEMPLATE ── -->
+          <div class="product-card" data-category="free">
+            <div class="card-preview preview-free">
+              <div class="pf-label">Quick Start CRM — Free</div>
+              <div class="pf-item"><div class="pf-dot"></div>Client contact list (up to 5)</div>
+              <div class="pf-item"><div class="pf-dot"></div>Weekly focus dashboard</div>
+              <div class="pf-item"><div class="pf-dot"></div>Content ideas tracker</div>
+              <div class="pf-item"><div class="pf-dot"></div>Monthly revenue snapshot</div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag" style="background:rgba(40,167,69,.1);color:#28a745">Free</span>
+              <h3 class="product-name">Quick Start CRM</h3>
+              <p class="product-desc">A free Notion CRM starter for up to 5 clients. Get a taste of my build quality — no strings attached.</p>
+              <div class="product-footer">
+                <span class="product-price free">Free</span>
+                <a class="product-link" href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f181e69a70ca6582e3da64?pvs=74" target="_blank">Download →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section-sm" style="background: var(--deep); text-align: center;">
+        <p class="section-eyebrow" style="color: var(--tan);">Custom work</p>
+        <h2 class="section-title" style="color: var(--cream);">Need something <em style="color:var(--tan)">custom?</em>
+        </h2>
+        <p class="section-sub" style="color: rgba(250,245,240,.5);">If your hour is worth $100 and this system saves you 5 hours a week — it pays for itself in one week. Let's build it together.</p>
+        <a class="btn-primary" href="/contact" style="margin-top:8px">DM "COACH" on Instagram →</a>
+      </section>
+
+    </div><!-- /shop -->
+
+
+    <!-- ═══════════════ ABOUT PAGE ═══════════════ -->
+    <div class="page" id="page-about">
+
+      <div class="about-hero">
+        <div class="about-hero-content">
+          <p class="hero-eyebrow">My story</p>
+          <h1 class="hero-title">I build systems<br>so you can <em>focus</em></h1>
+          <p class="hero-sub">YourBloom Studio is a boutique studio of one, based in Panama. I build Notion operating systems and AI automations for coaches and online experts who want to run their business without the chaos.</p>
+        </div>
+        <div class="about-hero-img">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" />
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(60 200 200)" />
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" transform="rotate(120 200 200)" />
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(180 200 200)" />
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".4" transform="rotate(240 200 200)" />
+            <ellipse cx="200" cy="152" rx="34" ry="72" fill="#c94070" opacity=".3" transform="rotate(300 200 200)" />
+            <circle cx="200" cy="200" r="46" fill="#faf5f0" opacity=".6" />
+            <circle cx="200" cy="200" r="26" fill="#c94070" opacity=".5" />
+            <circle cx="200" cy="200" r="10" fill="#faf5f0" opacity=".8" />
+          </svg>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="about-split">
+          <div>
+            <h2 class="section-title" style="text-align:left; font-size:36px">Maria —<br><em>Systems Architect for Coaches</em></h2>
+            <p style="font-size:15px; line-height:1.8; color:var(--muted); margin-bottom:20px; font-weight:300">I relocated to Panama 4+ years ago and built YourBloom Studio as a boutique studio of one. My superpower is the rare combination of technical precision and genuine empathy — I understand both the systems side and the human side of running a coaching business.</p>
+            <p style="font-size:15px; line-height:1.8; color:var(--muted); font-weight:300">I build things that actually work: clean Notion operating systems you'll use every day, AI automations that save you 10+ hours every week, and tools that make running an online business feel calm instead of chaotic. Every system comes with 14 days of support after launch.</p>
+          </div>
+          <div>
+            <div style="background:var(--rose-pale); border-radius:120px 120px 16px 16px; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; overflow: hidden;">
+              <img src="about-me.jpg" alt="Maria" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-sm" style="background:var(--warm)">
+        <p class="section-eyebrow">What I stand for</p>
+        <h2 class="section-title">My values</h2>
+        <div class="values-grid" style="margin-top:48px">
+          <div class="value-card">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
+                <path d="M12 2l2.9 8.7H23l-7.4 5.4 2.8 8.7L12 19.4l-6.4 5.4 2.8-8.7L2 10.7h8.1z" />
+              </svg>
+            </div>
+            <h3 class="value-title">Simplicity first</h3>
+            <p class="value-desc">I build systems that are easy to actually use. If it's complicated, it won't get used. I always choose clarity over cleverness.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3.5 2" />
+              </svg>
+            </div>
+            <h3 class="value-title">Time is money</h3>
+            <p class="value-desc">Every hour you spend on admin is an hour not spent on clients. I automate the repetitive so you can focus on what matters.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c94070" stroke-width="1.5">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+              </svg>
+            </div>
+            <h3 class="value-title">Delivered with care</h3>
+            <p class="value-desc">I treat every project like it's my own business. 3-day turnaround, 1 free revision, pay only when you're happy.</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /about -->
+
+    <!-- ═══════════════ WORK WITH US ═══════════════ -->
+    <div class="page" id="page-work">
+
+      <div class="shop-hero">
+        <p class="section-eyebrow">Get in touch</p>
+        <h1 class="section-title">Let's build something<br><em>together</em></h1>
+        <p class="section-sub">Ready to stop managing your business from your inbox? Reach out directly — I respond within 24 hours.</p>
+      </div>
+
+      <div style="background:var(--deep);padding:48px 8%;">
+        <div class="contact-btn-grid">
+
+          <a href="https://wa.me/50763958484" target="_blank" class="cbtn primary">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--rose)">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+            </div>
+            <div>
+              <div class="cbtn-label">Fastest reply</div>WhatsApp +507 6395-8484
+            </div>
+          </a>
+
+          <a href="https://t.me/milamira" target="_blank" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--cream)">
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" />
+              </svg>
+            </div>
+            <div>
+              <div class="cbtn-label">Telegram</div>@milamira
+            </div>
+          </a>
+
+          <a href="https://instagram.com/yourbloom.site" target="_blank" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </div>
+            <div>
+              <div class="cbtn-label">Instagram · DM "COACH"</div>@yourbloom.site
+            </div>
+          </a>
+
+          <a href="/cdn-cgi/l/email-protection#94fcf1f8f8fbd4edfbe1e6f6f8fbfbf9bae7fde0f1" class="cbtn">
+            <div class="cbtn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 7l10 7 10-7" />
+              </svg>
+            </div>
+            <div>
+              <div class="cbtn-label">Email</div><span class="__cf_email__"
+                data-cfemail="4c24292020230c3523393e2e20232321623f253829">[email&#160;protected]</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>I'd love to hear from you</h3>
+            <p>Whether you need a custom Notion system, have a question about a service, or just want to say hello — I respond within 24 hours on business days.</p>
+
+            <div
+              style="margin-top:32px;background:var(--warm);border-radius:16px;padding:24px;border:1px solid var(--border);">
+              <p
+                style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:14px;">
+                What happens next</p>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div
+                    style="width:24px;height:24px;border-radius:50%;background:var(--rose-pale);color:var(--rose);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    1</div>
+                  <p style="font-size:13px;color:var(--muted);line-height:1.6;">I reply within 24 hours</p>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div
+                    style="width:24px;height:24px;border-radius:50%;background:var(--rose-pale);color:var(--rose);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    2</div>
+                  <p style="font-size:13px;color:var(--muted);line-height:1.6;">Short chat to understand your setup</p>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div
+                    style="width:24px;height:24px;border-radius:50%;background:var(--rose-pale);color:var(--rose);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    3</div>
+                  <p style="font-size:13px;color:var(--muted);line-height:1.6;">I build in 3 days · Pay on delivery</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item" style="margin-top:24px;">
+              <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#c94070" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 1.5" />
+                </svg></div>
+              <div>
+                <div class="contact-item-text">EST timezone · Panama</div>
+                <div class="contact-item-label">Response within 24h</div>
+              </div>
+            </div>
+          </div>
+
+          <form action="https://formspree.io/f/xojkplda" method="POST" class="contact-form"
+            onsubmit="handleFormspreeSubmit(event)">
+            <div class="form-group"><label>Your name</label><input type="text" name="name" placeholder="Sarah" required>
+            </div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="sarah@example.com"
+                required></div>
+            <div class="form-group"><label>What do you need?</label>
+              <select name="service">
+                <option>The Automated Studio ($450)</option>
+                <option>The Foundation ($185)</option>
+                <option>The Content Master ($220)</option>
+                <option>Personal AI Expert Bot ($250–500)</option>
+                <option>AI Content Repurposing System</option>
+                <option>AI Sales Email Sequence ($45)</option>
+                <option>Workflow Audit ($100)</option>
+                <option>Smart Lead Qualifier ($75)</option>
+                <option>Something custom</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Tell us more</label><textarea name="message"
+                placeholder="Tell us about your business and what you're trying to solve..." required></textarea></div>
+            <button type="submit" class="btn-primary" style="align-self:flex-start">Send message →</button>
+            <p style="font-size:11px;color:var(--muted);margin-top:8px;">Or DM <strong>"COACH"</strong> on Instagram 🌸
+            </p>
+          </form>
+        </div>
+      </section>
+
+    </div><!-- /work -->
+  </div><!-- /page-wrapper -->
+
+  <!-- FOOTER -->
   <footer>
+    <!-- Social bar -->
     <div class="footer-social-bar">
       <p>Follow us &amp; reach out directly</p>
       <div class="footer-social-pills">
@@ -356,18 +2341,22 @@
         </a>
         <a href="https://wa.me/50763958484" target="_blank" class="footer-pill">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
           </svg>
           WhatsApp
         </a>
         <a href="https://t.me/milamira" target="_blank" class="footer-pill">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.064 13.19l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.834.369z" />
           </svg>
           Telegram
         </a>
       </div>
     </div>
+
+    <!-- Main grid -->
     <div class="footer-main">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -391,14 +2380,17 @@
           </div>
           <p class="footer-brand-desc">Notion operating systems &amp; AI automations for coaches and online experts. Built with care in Panama.</p>
         </div>
+
         <div class="footer-col">
           <h4>Services</h4>
           <a href="/shop">The Automated Studio — $450</a>
           <a href="/shop">The Foundation — $185</a>
           <a href="/shop">AI Expert Bot — from $250</a>
           <a href="/shop">Workflow Audit — $100</a>
-          <a href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f181e69a70ca6582e3da64?pvs=74" target="_blank">Free CRM Demo →</a>
+          <a href="https://alabaster-plum-6a3.notion.site/YourBloom-Studio-Notion-Business-OS-Demo-327918c7e1f181e69a70ca6582e3da64?pvs=74"
+            target="_blank">Free CRM Demo →</a>
         </div>
+
         <div class="footer-col">
           <h4>Studio</h4>
           <a href="/about">About Maria</a>
@@ -406,14 +2398,17 @@
           <a href="/shop">Services</a>
           <a href="https://yourbloom.site">yourbloom.site</a>
         </div>
+
         <div class="footer-col">
           <h4>Reach us</h4>
-          <a href="mailto:hello@yourbloom.site">hello@yourbloom.site</a>
+          <a href="/cdn-cgi/l/email-protection#86eee3eaeae9c6ffe9f3f4e4eae9e9eba8f5eff2e3"><span class="__cf_email__"
+              data-cfemail="86eee3eaeae9c6ffe9f3f4e4eae9e9eba8f5eff2e3">[email&#160;protected]</span></a>
           <a href="https://wa.me/50763958484" target="_blank">WhatsApp +507 6395-8484</a>
           <a href="https://t.me/milamira" target="_blank">Telegram</a>
           <a href="https://instagram.com/yourbloom.site" target="_blank">@yourbloom.site</a>
         </div>
       </div>
+
       <div class="footer-bottom">
         <span>© 2026 YourBloom Studio · yourbloom.site</span>
         <span>Made with 🌸 in Panama</span>
@@ -423,6 +2418,12 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + name);
+      if (target) { target.classList.add('active'); }
+      window.scrollTo(0, 0);
+    }
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
       if (links.style.display === 'flex') {
@@ -449,8 +2450,9 @@
       b.classList.add('active');
       const filter = b.dataset.filter || 'all';
       document.querySelectorAll('.product-card').forEach(card => {
-        if (filter === 'all') { card.style.display = ''; }
-        else {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
           const cat = (card.dataset.category || '').toLowerCase();
           card.style.display = cat.includes(filter) ? '' : 'none';
         }
@@ -461,9 +2463,5 @@
   <a href="https://wa.me/50763958484" target="_blank"
     style="position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.108.549 4.086 1.512 5.8L0 24l6.362-1.489A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.586-.5-5.083-1.373l-.362-.214-3.777.885.924-3.671-.235-.376A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-    </svg>
-  </a>
-
-</body>
-</html>
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.
