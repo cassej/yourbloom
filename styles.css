@@ -1543,3 +1543,14 @@
     order: 2;
   }
 }
+
+/* Ссылки в футере (Privacy Policy, Terms of Service) */
+.footer-bottom a {
+  color: rgba(250, 245, 240, .4);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-bottom a:hover {
+  color: var(--tan);
+}
