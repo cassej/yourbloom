@@ -1505,3 +1505,41 @@
       background: #28a745;
       flex-shrink: 0;
     }
+
+    /* ── FOOTER LEGAL LINKS ── */
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(250, 245, 240, .25);
+  letter-spacing: 0.03em;
+}
+
+.footer-legal a {
+  color: rgba(250, 245, 240, .4);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-legal a:hover {
+  color: var(--tan);
+}
+
+.footer-legal-sep {
+  color: rgba(250, 245, 240, .15);
+  user-select: none;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .footer-legal {
+    order: 2;
+  }
+}
