@@ -5,18 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service — YourBloom Studio</title>
   <meta name="description" content="Terms of service for YourBloom Studio. Read our policies on digital products, payments, and usage.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    .legal-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-    .legal-container h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--deep); margin: 40px 0 16px; }
-    .legal-container h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--deep); margin: 24px 0 12px; }
-    .legal-container p, .legal-container li { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 12px; font-weight: 300; }
-    .legal-container ul { padding-left: 20px; margin-bottom: 16px; }
-    .legal-container a { color: var(--rose); text-decoration: underline; }
-    .last-updated { font-size: 13px; color: var(--muted); margin-bottom: 32px; font-style: italic; }
-    .highlight-box { background: var(--rose-blush); border-left: 4px solid var(--rose); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; }
-  </style>
 </head>
 <body>
   <!-- Announcement -->
@@ -28,18 +20,7 @@
   <nav>
     <a href="/" class="nav-logo">
       <div class="logo-svg-inline">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="38" height="38">
-          <rect width="400" height="400" rx="80" fill="#c94070"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(60 200 200)"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(120 200 200)"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(180 200 200)"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(240 200 200)"/>
-          <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(300 200 200)"/>
-          <circle cx="200" cy="200" r="46" fill="#faf5f0"/>
-          <circle cx="200" cy="200" r="26" fill="#c94070"/>
-          <circle cx="200" cy="200" r="10" fill="#faf5f0"/>
-        </svg>
+        <img src="img/favicon.svg" alt="YourBloom" width="38" height="38">
       </div>
       <div class="nav-logo-text">
         YourBloom
@@ -165,18 +146,7 @@
         <div class="footer-brand">
           <div class="footer-logo">
             <div class="logo-svg-inline">
-              <svg viewBox="0 0 400 400" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
-                <rect width="400" height="400" rx="80" fill="#c94070"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(60 200 200)"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(120 200 200)"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(180 200 200)"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(240 200 200)"/>
-                <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(300 200 200)"/>
-                <circle cx="200" cy="200" r="46" fill="#faf5f0"/>
-                <circle cx="200" cy="200" r="26" fill="#c94070"/>
-                <circle cx="200" cy="200" r="10" fill="#faf5f0"/>
-              </svg>
+              <img src="img/favicon.svg" alt="YourBloom" width="34" height="34">
             </div>
             <div class="footer-logo-text">
               YourBloom
@@ -230,139 +200,6 @@
   </div>
 </div>
 
-<style>
-  .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--deep);
-    color: var(--cream);
-    padding: 20px 8%;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-    z-index: 9999;
-    display: none;
-    animation: slideUp 0.3s ease-out;
-  }
-
-  .cookie-banner.show {
-    display: block;
-  }
-
-  .cookie-banner-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .cookie-banner p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(250, 245, 240, .7);
-    margin: 0;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .cookie-banner a {
-    color: var(--tan);
-    text-decoration: underline;
-  }
-
-  .cookie-banner-buttons {
-    display: flex;
-    gap: 12px;
-  }
-
-  .cookie-btn-primary,
-  .cookie-btn-secondary {
-    padding: 10px 24px;
-    border-radius: 24px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: all .2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .cookie-btn-primary {
-    background: var(--rose);
-    color: var(--cream);
-  }
-
-  .cookie-btn-primary:hover {
-    background: var(--rose-light);
-  }
-
-  .cookie-btn-secondary {
-    background: transparent;
-    color: var(--cream);
-    border: 1.5px solid rgba(250, 245, 240, .3);
-  }
-
-  .cookie-btn-secondary:hover {
-    border-color: var(--tan);
-    color: var(--tan);
-  }
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .cookie-banner-content {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .cookie-banner-buttons {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-</style>
-
-<script>
-  // Показываем баннер, если согласие ещё не дано
-  if (!localStorage.getItem('cookie_consent')) {
-    setTimeout(function() {
-      document.getElementById('cookie-banner').classList.add('show');
-    }, 1000); // Показываем через 1 секунду
-  }
-
-  function acceptCookies() {
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.getElementById('cookie-banner').classList.remove('show');
-    // Здесь можно инициализировать Google Analytics и другие скрипты
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'granted'
-      });
-    }
-  }
-
-  function declineCookies() {
-    localStorage.setItem('cookie_consent', 'declined');
-    document.getElementById('cookie-banner').classList.remove('show');
-    // Отключаем аналитику
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'denied'
-      });
-    }
-  }
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>

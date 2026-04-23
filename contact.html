@@ -7,7 +7,7 @@
   <meta name="description" content="Ready to stop managing your business from your inbox? Get in touch and let's build your Notion Business OS together.">
   <meta property="og:title" content="Work with Me — YourBloom Studio">
   <meta property="og:description" content="Ready to stop managing your business from your inbox? Get in touch and let's build your Notion Business OS together.">
-  <meta property="og:image" content="about-me.jpg">
+  <meta property="og:image" content="img/about-me.jpg">
   <meta property="og:url" content="https://yourbloom.site/contact">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC226LY14"></script>
   <script>
@@ -16,13 +16,10 @@
     gtag('js', new Date());
     gtag('config', 'G-PQC226LY14');
   </script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23c94070'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(60 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(120 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(180 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23faf5f0' transform='rotate(240 200 200)'/%3E%3Cellipse cx='200' cy='152' rx='34' ry='72' fill='%23f0e8e0' transform='rotate(300 200 200)'/%3E%3Ccircle cx='200' cy='200' r='46' fill='%23faf5f0'/%3E%3Ccircle cx='200' cy='200' r='26' fill='%23c94070'/%3E%3Ccircle cx='200' cy='200' r='10' fill='%23faf5f0'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="icon" type="image/png" href="img/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* nav active state */
-    .nav-links a.nav-active { color: var(--rose); font-weight: 500; }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -33,18 +30,7 @@
 
   <nav>
     <a class="nav-logo" href="/">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="400" fill="#c94070" rx="80" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(60 200 200)" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(120 200 200)" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(180 200 200)" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(240 200 200)" />
-        <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(300 200 200)" />
-        <circle cx="200" cy="200" r="46" fill="#faf5f0" />
-        <circle cx="200" cy="200" r="26" fill="#c94070" />
-        <circle cx="200" cy="200" r="10" fill="#faf5f0" />
-      </svg>
+      <img src="img/favicon.svg" alt="YourBloom" width="38" height="38">
       <div class="nav-logo-text">
         YourBloom
         <span>Studio</span>
@@ -232,18 +218,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-              <rect width="400" height="400" fill="#c94070" rx="80" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(60 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(120 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(180 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#faf5f0" transform="rotate(240 200 200)" />
-              <ellipse cx="200" cy="152" rx="34" ry="72" fill="#f0e8e0" transform="rotate(300 200 200)" />
-              <circle cx="200" cy="200" r="46" fill="#faf5f0" />
-              <circle cx="200" cy="200" r="26" fill="#c94070" />
-              <circle cx="200" cy="200" r="10" fill="#faf5f0" />
-            </svg>
+            <img src="img/favicon.svg" alt="YourBloom" width="34" height="34">
             <div class="footer-logo-text">
               YourBloom
               <span class="footer-logo-sub">Studio</span>
@@ -284,41 +259,6 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script>
-    function toggleMenu() {
-      const links = document.querySelector('.nav-links');
-      if (links.style.display === 'flex') {
-        links.style.display = 'none';
-      } else {
-        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--cream);padding:20px 8%;border-bottom:1px solid var(--border);z-index:99;gap:16px;';
-      }
-    }
-    function handleFormspreeSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button[type=submit]');
-      const orig = btn.textContent;
-      btn.textContent = 'Sending...';
-      fetch(form.action, { method: form.method, body: new FormData(form), headers: { 'Accept': 'application/json' } })
-        .then(r => {
-          if (r.ok) { btn.textContent = '✓ Sent!'; btn.style.background = '#28a745'; form.reset(); }
-          else { btn.textContent = 'Error. Try again'; btn.style.background = '#dc3545'; }
-          setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 3000);
-        }).catch(() => { btn.textContent = 'Error. Try again'; btn.style.background = '#dc3545'; setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 3000); });
-    }
-    document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      const filter = b.dataset.filter || 'all';
-      document.querySelectorAll('.product-card').forEach(card => {
-        if (filter === 'all') { card.style.display = ''; }
-        else {
-          const cat = (card.dataset.category || '').toLowerCase();
-          card.style.display = cat.includes(filter) ? '' : 'none';
-        }
-      });
-    }));
-  </script>
 
   <a href="https://wa.me/50763958484" target="_blank"
     style="position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;">
@@ -340,139 +280,7 @@
   </div>
 </div>
 
-<style>
-  .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--deep);
-    color: var(--cream);
-    padding: 20px 8%;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-    z-index: 9999;
-    display: none;
-    animation: slideUp 0.3s ease-out;
-  }
-
-  .cookie-banner.show {
-    display: block;
-  }
-
-  .cookie-banner-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .cookie-banner p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(250, 245, 240, .7);
-    margin: 0;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .cookie-banner a {
-    color: var(--tan);
-    text-decoration: underline;
-  }
-
-  .cookie-banner-buttons {
-    display: flex;
-    gap: 12px;
-  }
-
-  .cookie-btn-primary,
-  .cookie-btn-secondary {
-    padding: 10px 24px;
-    border-radius: 24px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: all .2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .cookie-btn-primary {
-    background: var(--rose);
-    color: var(--cream);
-  }
-
-  .cookie-btn-primary:hover {
-    background: var(--rose-light);
-  }
-
-  .cookie-btn-secondary {
-    background: transparent;
-    color: var(--cream);
-    border: 1.5px solid rgba(250, 245, 240, .3);
-  }
-
-  .cookie-btn-secondary:hover {
-    border-color: var(--tan);
-    color: var(--tan);
-  }
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .cookie-banner-content {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .cookie-banner-buttons {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-</style>
-
-<script>
-  // Показываем баннер, если согласие ещё не дано
-  if (!localStorage.getItem('cookie_consent')) {
-    setTimeout(function() {
-      document.getElementById('cookie-banner').classList.add('show');
-    }, 1000); // Показываем через 1 секунду
-  }
-
-  function acceptCookies() {
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.getElementById('cookie-banner').classList.remove('show');
-    // Здесь можно инициализировать Google Analytics и другие скрипты
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'granted'
-      });
-    }
-  }
-
-  function declineCookies() {
-    localStorage.setItem('cookie_consent', 'declined');
-    document.getElementById('cookie-banner').classList.remove('show');
-    // Отключаем аналитику
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'denied'
-      });
-    }
-  }
-</script>
+<script src="js/main.js"></script>
+<script src="js/forms.js"></script>
 </body>
 </html>
