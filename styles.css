@@ -79,7 +79,8 @@
       text-decoration: none;
     }
 
-    .nav-logo svg {
+    .nav-logo svg,
+    .nav-logo img {
       width: 38px;
       height: 38px;
     }
@@ -913,7 +914,8 @@
       gap: 10px;
     }
 
-    .footer-logo svg {
+    .footer-logo svg,
+    .footer-logo img {
       width: 34px;
       height: 34px;
     }
